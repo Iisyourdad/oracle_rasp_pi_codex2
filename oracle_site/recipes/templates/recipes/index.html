@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <title>{% if home_page %}{{ home_page.title }}{% else %}Westbrook Recipes{% endif %}</title>
   <link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'recipes/css/keyboard.css' %}">
   <!-- jQuery UI CSS for autocomplete -->
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
   <style>
@@ -47,13 +48,6 @@
     /* Scrollbar */
     #child::-webkit-scrollbar { display: none; }
     #child { -ms-overflow-style: none; scrollbar-width: none; }
-    /* On-Screen Keyboard - Dual-Panel */
-    .onscreen-keyboard { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #333; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 2000; max-width: 600px; width: 90%; cursor: none; font-family: 'Roboto', sans-serif; display: none; }
-    .keyboard-row { display: flex; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; }
-    .key { background: #555; border: none; border-radius: 5px; margin: 4px; padding: 10px 14px; font-size: 1em; cursor: none; color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.2s ease; }
-    .key:hover { background: #666; }
-    .key-large { min-width: 100px; flex: 1; }
-    .shift-active { background: #4285F4 !important; }
   </style>
   <link rel="icon" href="{% static 'favicon.ico' %}" sizes="any">
 
@@ -94,14 +88,14 @@
       </nav>
 
       <!-- Home Header Section -->
-      <header class="home-header" style="background-image: url('{{ home_page.background_image.url }}');">
+      <header class="home-header" style="background-image: url('{{ background_image_url }}');">
         <div class="overlay">
           <div class="header-content">
             <h1>{% if home_page %}{{ home_page.title }}{% else %}Westbrook Recipes{% endif %}</h1>
             <button class="view-recipes" onclick="scrollToRecipes()">View Recipes</button>
             <div class="header-search">
               <form id="search-form" method="GET" action="">
-                <input type="text" id="search-input" name="q" placeholder="Search anything..." autocomplete="off" value="{{ query }}">
+                <input type="text" id="search-input" name="q" placeholder="Search anything..." autocomplete="off" value="{{ query }}" class="virtual-keyboard-target">
                 <input type="hidden" id="meal-hidden" name="meal" value="{{ meal_filter }}">
                 <button type="submit">Search</button>
               </form>
@@ -185,6 +179,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script src="{% static 'recipes/js/keyboard.js' %}" defer></script>
   <script>
     $(document).ready(function(){
       var mealTypes = ["breakfast","lunch","dinner","dessert"];
@@ -197,13 +192,35 @@
       });
     });
 
+    var inactivityTimer;
+    var INACTIVITY_LIMIT_MS = 60 * 60 * 1000; // 1 hour
+
     function turnOffDisplay() {
       var overlay = document.getElementById("display-off-overlay");
       overlay.style.display = "block";
       document.querySelector("#display-overlay-content .overlay-text").innerText = "Touch anywhere to turn on display";
+      clearTimeout(inactivityTimer);
     }
     function turnOnDisplay() {
       document.getElementById("display-off-overlay").style.display = "none";
+      resetInactivityTimer();
+    }
+    function resetInactivityTimer() {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(function() {
+        turnOffDisplay();
+      }, INACTIVITY_LIMIT_MS);
+    }
+    function registerInactivityListeners() {
+      var events = ['mousemove', 'keydown', 'touchstart', 'touchmove', 'click'];
+      events.forEach(function(evt) {
+        document.addEventListener(evt, resetInactivityTimer, { passive: true });
+      });
+      window.addEventListener('scroll', resetInactivityTimer, { passive: true });
+      var scrollContainer = document.getElementById('child');
+      if (scrollContainer) {
+        scrollContainer.addEventListener('scroll', resetInactivityTimer, { passive: true });
+      }
     }
     function shutdownDevice() {
       var overlay = document.getElementById("shutdown-overlay");
@@ -229,79 +246,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', function(){
-      document.addEventListener("focusin", function(e){
-        if(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"){
-          document.getElementById("onscreen-keyboard").style.display="block";
-        }
-      });
-      let isShiftActive=false;
-      const shiftBtn=document.querySelector('.shift-btn');
-      document.querySelectorAll('#alphabet-panel .key').forEach(btn=>{
-        btn.addEventListener('click', function(){
-          if(this.id==='toggle-symbols-btn') return;
-          let input=document.getElementById("search-input");
-          if(!input) return;
-          const key=this.getAttribute('data-key')||this.innerText;
-          if(key.toLowerCase()==="hide keyboard"){
-            document.getElementById("onscreen-keyboard").style.display="none"; return;
-          }
-          if(key.toLowerCase()==="backspace"){
-            input.value=input.value.slice(0,-1); input.focus(); return;
-          }
-          if(key.toLowerCase()==="space"){
-            input.value+=" "; input.focus(); return;
-          }
-          if(this.classList.contains("shift-btn")){
-            isShiftActive=!isShiftActive; toggleShiftMode(isShiftActive); return;
-          }
-          input.value+=key; input.focus();
-          if(isShiftActive&&this!==shiftBtn){ isShiftActive=false; toggleShiftMode(false); }
-        });
-      });
-      function toggleShiftMode(enabled){
-        shiftBtn.classList.toggle("shift-active",enabled);
-        document.querySelectorAll("#alphabet-panel .key:not([data-key])").forEach(k=>{
-          k.innerText=enabled?k.innerText.toUpperCase():k.innerText.toLowerCase();
-        });
-      }
-      document.querySelectorAll("#symbols-panel .key").forEach(btn=>{
-        btn.addEventListener("click", function(){
-          if(this.id==='toggle-alphabet-btn') return;
-          let input=document.getElementById("search-input");
-          if(!input) return;
-          const key=this.getAttribute("data-key")||this.innerText;
-          if(key.toLowerCase()==="hide keyboard"){
-            document.getElementById("onscreen-keyboard").style.display="none"; return;
-          }
-          if(key.toLowerCase()==="backspace"){
-            input.value=input.value.slice(0,-1); input.focus(); return;
-          }
-          if(key.toLowerCase()==="space"){
-            input.value+=" "; input.focus(); return;
-          }
-          input.value+=key; input.focus();
-        });
-      });
-      document.getElementById("toggle-symbols-btn").addEventListener("click", function(){
-        document.getElementById("alphabet-panel").style.display="none";
-        document.getElementById("symbols-panel").style.display="block";
-      });
-      document.getElementById("toggle-alphabet-btn").addEventListener("click", function(){
-        document.getElementById("symbols-panel").style.display="none";
-        document.getElementById("alphabet-panel").style.display="block";
-      });
-      (function(){
-        const kb=document.getElementById("onscreen-keyboard");
-        let dragging=false,startX,startY,origX,origY;
-        kb.addEventListener("mousedown",function(e){
-          if(e.target.classList.contains("key")) return;
-          dragging=true; startX=e.clientX; startY=e.clientY;
-          origX=kb.offsetLeft; origY=kb.offsetTop; e.preventDefault();
-        });
-        document.addEventListener("mousemove",function(e){
-        });
-        document.addEventListener("mouseup",function(){ dragging=false; });
-      })();
       (function() {
         var overlayContent = document.getElementById("display-overlay-content");
         var container = document.getElementById("display-off-overlay");
@@ -331,6 +275,8 @@
         }
         requestAnimationFrame(animateOverlayContent);
       })();
+      registerInactivityListeners();
+      resetInactivityTimer();
       if(window.location.search.indexOf("q=")!==-1) setTimeout(scrollToRecipes,300);
     });
   </script>

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -10,8 +11,27 @@ import subprocess
 from .models import HomePage, Recipe, Instruction
 from .forms import RecipeForm, IngredientForm, InstructionsForm
 
+
+def _get_home_page_for_request(request):
+    """Return the custom home page for the user or the default one."""
+    if request.user.is_authenticated:
+        user_home_page = HomePage.objects.filter(user=request.user).select_related("user").first()
+        if user_home_page:
+            return user_home_page
+    return HomePage.objects.filter(user__isnull=True).first()
+
+
+def _get_background_image_url(home_page):
+    default_path = getattr(settings, "DEFAULT_BACKGROUND_IMAGE", None)
+    if home_page and home_page.background_image:
+        return home_page.background_image.url
+    if default_path:
+        return f"{settings.MEDIA_URL}{default_path}" if not default_path.startswith("http") else default_path
+    return ""
+
 def index(request):
-    home_page = HomePage.objects.first()
+    home_page = _get_home_page_for_request(request)
+    background_image_url = _get_background_image_url(home_page)
     recipes = Recipe.objects.all()
     query = request.GET.get('q')
     meal_types = ['breakfast', 'lunch', 'dinner', 'dessert']
@@ -35,6 +55,7 @@ def index(request):
                 ).distinct()
     context = {
         'home_page': home_page,
+        'background_image_url': background_image_url,
         'recipes': recipes,
         'query': query or "",
         'meal_filter': "",
@@ -85,9 +106,11 @@ def toggle_favorite(request, recipe_id):
 def favorites(request):
     user = request.user
     recipes = Recipe.objects.filter(favorites=user)
-    home_page = HomePage.objects.first()
+    home_page = _get_home_page_for_request(request)
+    background_image_url = _get_background_image_url(home_page)
     context = {
         'home_page': home_page,
+        'background_image_url': background_image_url,
         'recipes': recipes,
         'meal_filter': "",
         'query': "",
