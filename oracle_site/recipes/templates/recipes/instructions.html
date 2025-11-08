@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instructions</title>
+  <link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+  <style>
+    body {
+      background: #f7f7f7;
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #000;
+    }
+    nav {
+      background: #dec773;
+      padding: 17px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    nav ul li {
+      margin-right: 20px;
+    }
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .header-section {
+      text-align: center;
+      padding: 2rem 0;
+      background: url("{% static 'recipes/images/instructions_bg.jpg' %}") no-repeat center center; <!-- why is this here -->
+      background-size: cover;
+      color: #1a1a1a;
+    }
+    .header-section h1 {
+      font-size: 4em;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
+    .content {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .toc {
+      margin-bottom: 2rem;
+    }
+    .toc h2 {
+      color: #333;
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+    }
+    .toc ul li {
+      margin-bottom: 0.5rem;
+    }
+    .toc ul li a {
+      color: #4285F4;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+    .instruction-section {
+      margin-bottom: 2rem;
+    }
+    .instruction-section h2 {
+      color: #333;
+      border-bottom: 2px solid #dec773;
+      padding-bottom: 0.5rem;
+    }
+    .instruction-section p {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'add_recipe' %}">Add Recipe</a></li>
+    </ul>
+  </nav>
+  <div class="header-section">
+    <h1>INSTRUCTIONS</h1>
+  </div>
+  <div class="content">
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ul>
+        {% for instruction in instructions %}
+          <li><a href="#instruction-{{ instruction.id }}">{{ instruction.title }}</a></li>
+        {% empty %}
+          <li>No instructions available.</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% for instruction in instructions %}
+      <div id="instruction-{{ instruction.id }}" class="instruction-section">
+        <h2>{{ instruction.title }}</h2>
+        <h2>{{ instruction.title }}</h2>
+        <p>{{ instruction.content|safe }}</p>
+      </div>
+    {% empty %}
+      <p>No instructions available. Please check back later.</p>
+    {% endfor %}
+  </div>
+</body>
+</html>

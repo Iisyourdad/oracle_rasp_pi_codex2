@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Instructions</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      cursor: none;
+    }
+    body {
+      background: #f7f7f7;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    nav {
+      background: #dec773;
+      padding: 17px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    nav ul li {
+      margin-right: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .main-container {
+      background: #fff;
+      width: 90%;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+    }
+    .main-container h1 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: #555;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+    button[type="submit"] {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #4285F4, #34A853);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(135deg, #34A853, #4285F4);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'add_recipe' %}">Add Recipe</a></li>
+      <li><a href="{% url 'add_ingredient' %}">Add Ingredient</a></li>
+      <li><a href="{% url 'instructions' %}">Instructions</a></li>
+    </ul>
+  </nav>
+  <div class="main-container">
+    <h1>Add Instructions</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.media }}
+      <div class="form-group">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+      </div>
+      <div class="form-group">
+        {{ form.content.label_tag }}
+        {{ form.content }}
+      </div>
+      <button type="submit">Submit Instructions</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+We are doing some wierd stuff here, we are basically having the server run on the python manage.py server and nginx is just proxies over to the dev server. So nginx is the publix and the django dev server is jkust proxied over. It works so I'm leaving it.

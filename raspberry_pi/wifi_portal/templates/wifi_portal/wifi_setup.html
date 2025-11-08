@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WiFi Setup</title>
+  <style>
+    body {
+      margin:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#f5f5f5;
+      font-family:sans-serif;
+      cursor:default;
+    }
+    .container {
+      background:#fff;
+      padding:2rem;
+      border-radius:8px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      width:90%;
+      max-width:360px;
+      text-align:center;
+      transform: perspective(600px) translateZ(-200px);
+      opacity:0;
+      animation: popIn 0.6s ease-out forwards;
+    }
+    @keyframes popIn {
+      to {
+        transform: perspective(600px) translateZ(0);
+        opacity:1;
+      }
+    }
+    /* only style form controls, not keyboard keys */
+    form input,
+    form button,
+    a.continue-btn {
+      width:100%;
+      padding:0.75rem;
+      margin-top:0.5rem;
+      border:1px solid #ccc;
+      border-radius:4px;
+      font-size:1rem;
+      box-sizing:border-box;
+    }
+    button[type="submit"] {
+      background:#4285F4;
+      color:#fff;
+      border:none;
+      cursor:pointer;
+    }
+    a.continue-btn {
+      display:inline-block;
+      text-decoration:none;
+      background:#777;
+      color:#fff;
+      margin-top:0.5rem;
+    }
+    a.continue-btn:hover {
+      background:#555;
+    }
+    .error {
+      color:#d9534f;
+      margin-top:1rem;
+    }
+
+    /* On-Screen Keyboard (copied from index.html) */
+    .onscreen-keyboard {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 2000;
+      max-width: 600px;
+      width: 90%;
+      cursor: none;
+      font-family: 'Roboto', sans-serif;
+      display: none;
+    }
+    .keyboard-row {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+    .key {
+      /* override any global button width */
+      width: auto;
+      background: #555;
+      border: none;
+      border-radius: 5px;
+      margin: 4px;
+      padding: 10px 14px;
+      font-size: 1em;
+      cursor: none;
+      color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: background 0.2s ease;
+    }
+    .key:hover { background: #666; }
+    .key-large { min-width: 100px; flex: 1; }
+    .shift-active { background: #4285F4 !important; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Connect to WiFi</h2>
+    <form method="post" action="{% url 'wifi_connecting' %}">
+      {% csrf_token %}
+      <input name="ssid" placeholder="SSID" required>
+      <input name="password" placeholder="Password" type="password" required>
+      <button type="submit">Connect</button>
+    </form>
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+  </div>
+
+  <!-- On-Screen Keyboard -->
+  <div id="onscreen-keyboard" class="onscreen-keyboard">
+    <div id="alphabet-panel">
+      <div class="keyboard-row">
+        <button class="key">q</button><button class="key">w</button><button class="key">e</button><button class="key">r</button><button class="key">t</button><button class="key">y</button><button class="key">u</button><button class="key">i</button><button class="key">o</button><button class="key">p</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key">a</button><button class="key">s</button><button class="key">d</button><button class="key">f</button><button class="key">g</button><button class="key">h</button><button class="key">j</button><button class="key">k</button><button class="key">l</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key shift-btn">Shift</button><button class="key">z</button><button class="key">x</button><button class="key">c</button><button class="key">v</button><button class="key">b</button><button class="key">n</button><button class="key">m</button><button class="key" data-key="Backspace">Backspace</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key key-large" data-key=" ">Space</button>
+        <button class="key key-large" id="toggle-symbols-btn">Symbols</button>
+        <button class="key key-large" data-key="hide keyboard">Hide Keyboard</button>
+      </div>
+    </div>
+    <div id="symbols-panel" style="display:none;">
+      <div class="keyboard-row">
+        <button class="key">1</button><button class="key">2</button><button class="key">3</button><button class="key">4</button><button class="key">5</button><button class="key">6</button><button class="key">7</button><button class="key">8</button><button class="key">9</button><button class="key">0</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key">-</button><button class="key">=</button><button class="key">[</button><button class="key">]</button><button class="key">\\</button><button class="key">;</button><button class="key">'</button><button class="key">,</button><button class="key">.</button><button class="key">/</button><button class="key">*</button><button class="key">+</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key">~</button><button class="key">!</button><button class="key">@</button><button class="key">#</button><button class="key">$</button><button class="key">%</button><button class="key">^</button><button class="key">&amp;</button><button class="key">*</button><button class="key">(</button><button class="key">)</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key">_</button><button class="key">+</button><button class="key">{</button><button class="key">}</button><button class="key">|</button><button class="key">:</button><button class="key">"</button><button class="key">&lt;</button><button class="key">&gt;</button><button class="key">?</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key" id="toggle-alphabet-btn">ABC</button><button class="key" data-key="hide keyboard">Hide Keyboard</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const keyboard = document.getElementById('onscreen-keyboard');
+      let currentInput = null;
+      let isShift = false;
+      const shiftBtn = keyboard.querySelector('.shift-btn');
+
+      document.addEventListener('focusin', function(e){
+        if(e.target.tagName==='INPUT' || e.target.tagName==='TEXTAREA'){
+          currentInput = e.target;
+          keyboard.style.display = 'block';
+        }
+      });
+
+      function insertChar(c){
+        if(!currentInput) return;
+        if(c==='Backspace'){
+          currentInput.value = currentInput.value.slice(0,-1);
+        } else {
+          currentInput.value += c;
+        }
+        currentInput.focus();
+      }
+
+      keyboard.querySelectorAll('#alphabet-panel .key').forEach(btn=>{
+        btn.addEventListener('click', function(){
+          const key = btn.getAttribute('data-key') || btn.innerText;
+          if(key==='hide keyboard'){
+            keyboard.style.display='none';
+            return;
+          }
+          if(btn.id==='toggle-symbols-btn'){
+            keyboard.querySelector('#alphabet-panel').style.display='none';
+            keyboard.querySelector('#symbols-panel').style.display='block';
+            return;
+          }
+          if(btn.classList.contains('shift-btn')){
+            isShift = !isShift;
+            shiftBtn.classList.toggle('shift-active', isShift);
+            keyboard.querySelectorAll('#alphabet-panel .key:not(.shift-btn)').forEach(k=>{
+              if(k.getAttribute('data-key')) return;
+              k.innerText = isShift? k.innerText.toUpperCase() : k.innerText.toLowerCase();
+            });
+            return;
+          }
+          const char = isShift? key.toUpperCase() : key;
+          insertChar(char);
+          if(isShift){
+            isShift=false;
+            shiftBtn.classList.remove('shift-active');
+            keyboard.querySelectorAll('#alphabet-panel .key:not(.shift-btn)').forEach(k=>{
+              if(k.getAttribute('data-key')) return;
+              k.innerText = k.innerText.toLowerCase();
+            });
+          }
+        });
+      });
+
+      keyboard.querySelectorAll('#symbols-panel .key').forEach(btn=>{
+        btn.addEventListener('click', function(){
+          const key = btn.getAttribute('data-key') || btn.innerText;
+          if(key==='hide keyboard'){
+            keyboard.style.display='none';
+            return;
+          }
+          if(btn.id==='toggle-alphabet-btn'){
+            keyboard.querySelector('#symbols-panel').style.display='none';
+            keyboard.querySelector('#alphabet-panel').style.display='block';
+            return;
+          }
+          insertChar(key);
+        });
+      });
+
+      // drag
+      let dragging=false, sx, sy, ox, oy;
+      keyboard.addEventListener('mousedown', function(e){
+        if(e.target.classList.contains('key')) return;
+        dragging=true; sx=e.clientX; sy=e.clientY;
+        ox=keyboard.offsetLeft; oy=keyboard.offsetTop; e.preventDefault();
+      });
+      document.addEventListener('mousemove', function(e){
+        if(dragging){
+          keyboard.style.left = (ox + e.clientX - sx) + 'px';
+          keyboard.style.top  = (oy + e.clientY - sy) + 'px';
+        }
+      });
+      document.addEventListener('mouseup', function(){ dragging=false; });
+    });
+  </script>
+</body>
+</html>

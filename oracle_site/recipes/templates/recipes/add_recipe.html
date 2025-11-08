@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Recipe</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}">
+  <style>
+    /* Force html and body to fill the viewport */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      cursor: default;
+    }
+    body {
+      background: #f7f7f7;
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    /* Nav bar remains at the top */
+    nav {
+      background: #dec773;
+      padding: 17px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+    }
+    nav ul li {
+      margin-right: 20px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    /* Main container styling */
+    .main-container {
+      background: #fff;
+      width: 90%;
+      max-width: 800px;
+      flex: 1;
+      margin: 40px auto 0;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      box-sizing: border-box;
+    }
+    .main-container h1 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    .main-container p {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #555;
+    }
+    .main-container a.instructions-link {
+      display: inline-block;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      color: #4285F4;
+      text-decoration: underline;
+    }
+    .ip-display {
+      text-align: center;
+      margin-top: 0.5rem;
+      color: #555;
+      font-weight: 500;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .form-group label {
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: #555;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+    button[type="submit"] {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #4285F4, #34A853);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button[type="submit"]:hover {
+      background: linear-gradient(135deg, #34A853, #4285F4);
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav bar -->
+  <nav>
+    <ul>
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'add_recipe' %}">Add Recipe</a></li>
+      <!-- <li><a href="{% url 'add_ingredient' %}">Add Ingredient</a></li> -->
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'favorites' %}">My Favorites</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  <div class="main-container">
+    <h1>Add Recipe</h1>
+    {% if system_ip %}
+      <p>
+        Please use a keyboard and mouse to add recipes or go to Google on another computer and type in {{ system_ip }}:8000
+      </p>
+    {% else %}
+      <p>Please use a keyboard and mouse to add recipes.</p>
+    {% endif %}
+    <!--<p><a class="instructions-link" href="/instructions/">Instructions</a></p>-->
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.media }}
+      <div class="form-group">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+      </div>
+      <div class="form-group">
+        {{ form.meal_type.label_tag }}
+        {{ form.meal_type }}
+      </div>
+      <div class="form-group">
+        {{ form.instructions.label_tag }}
+        {{ form.instructions }}
+      </div>
+      <button type="submit">Submit Recipe</button>
+    </form>
+  </div>
+</body>
+</html>

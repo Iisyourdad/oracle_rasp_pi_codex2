@@ -1,0 +1,6 @@
+# from your repo folder
+git status
+git add .                          # or: git add <files>
+git commit -m "Describe the change"
+git pull --rebase origin main      # bring remote changes in cleanly
+git push origin main               # first time? use: git push -u origin main

@@ -1,0 +1,339 @@
+<!-- index.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="background-color: #f1f1f1;">
+<head>
+  <meta charset="UTF-8">
+  <title>{% if home_page %}{{ home_page.title }}{% else %}Westbrook Recipes{% endif %}</title>
+  <link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}">
+  <!-- jQuery UI CSS for autocomplete -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <style>
+    /* Global Styles */
+    #parent { width: 100%; height: 100%; overflow: hidden; }
+    #child { width: 100%; height: 100%; overflow-y: scroll; padding-right: 17px; box-sizing: content-box; }
+    body, html { overflow: scroll; -webkit-overflow-scrolling: touch; margin: 0; padding: 0; font-family: Arial, sans-serif; width: 100%; height: 100%; cursor: none; }
+    nav { background: #dec773; padding: 17px; }
+    nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; }
+    nav ul li { margin-right: 20px; }
+    nav ul li a { color: #fff; text-decoration: none; }
+    nav ul li.nav-right { margin-left: auto; display: flex; gap: 20px; align-items: center; }
+    nav ul li button { background: none; border: none; color: #fff; font: inherit; cursor: none; }
+    .home-header { height: 100vh; background-size: cover; background-position: center; position: relative; display: flex; }
+    .overlay { width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); position: relative; }
+    .header-content { position: absolute; top: 28vh; left: 11vh; color: #fff; }
+    .header-content h1 { width: 100%; font-size: 3em; margin-bottom: 20px; }
+    .view-recipes { background-color: #6495ED; color: #fff; border: none; padding: 10px 20px; font-size: 1em; cursor: none; margin-right: 20px; }
+    .header-search { display: inline-block; background: #dec773; padding: 8px 10px; border-radius: 30px; box-shadow: 0px 4px 6px rgba(0,0,0,0.3); vertical-align: middle; }
+    .header-search form { display: flex; align-items: center; }
+    .header-search input[type="text"] { padding: 8px; border: none; font-size: 1em; border-radius: 30px 0 0 30px; }
+    .header-search button { padding: 8px; border: none; font-size: 1em; border-radius: 0 30px 30px 0; cursor: none; background-color: #6495ED; color: #fff; }
+    .form-container { width: 80%; margin: 20px auto; }
+    #recipes-section { padding: 20px; }
+    .recipe-list { list-style: none; padding: 0; margin: 20px auto; overflow: hidden; }
+    .recipe-post { margin-bottom: 30px; clear: both; }
+    .recipe-left, .recipe-right { width: 66.66%; background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+    .recipe-left { float: left; }
+    .recipe-right { float: right; }
+    .recipe-title { font-size: 1.8em; font-weight: bold; margin-bottom: 10px; color: #333; border-bottom: 2px solid #dec773; padding-bottom: 5px; }
+    .recipe-instructions { font-size: 1em; line-height: 1.5; color: #555; margin-bottom: 10px; }
+    .recipe-ingredients { font-size: 0.9em; color: #777; }
+    /* Overlays */
+    #display-off-overlay, #shutdown-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: black; z-index: 1000; cursor: none; }
+    #display-overlay-content { position: absolute; text-align: center; color: #fff; font-family: Arial, sans-serif; }
+    #display-overlay-content .overlay-text { font-size: 1.5em; margin-bottom: 20px; }
+    #display-overlay-content .overlay-icon img { width: 144px; height: 144px; }
+    #shutdown-overlay .shutdown-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-size: 1.5em; font-family: Arial, sans-serif; text-align: center; }
+    /* Scrollbar */
+    #child::-webkit-scrollbar { display: none; }
+    #child { -ms-overflow-style: none; scrollbar-width: none; }
+    /* On-Screen Keyboard - Dual-Panel */
+    .onscreen-keyboard { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #333; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); z-index: 2000; max-width: 600px; width: 90%; cursor: none; font-family: 'Roboto', sans-serif; display: none; }
+    .keyboard-row { display: flex; justify-content: center; margin-bottom: 8px; flex-wrap: wrap; }
+    .key { background: #555; border: none; border-radius: 5px; margin: 4px; padding: 10px 14px; font-size: 1em; cursor: none; color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: background 0.2s ease; }
+    .key:hover { background: #666; }
+    .key-large { min-width: 100px; flex: 1; }
+    .shift-active { background: #4285F4 !important; }
+  </style>
+  <link rel="icon" href="{% static 'favicon.ico' %}" sizes="any">
+
+
+</head>
+<body>
+  <div id="parent">
+    <div id="child">
+      <!-- Display Off Overlay -->
+      <div id="display-off-overlay" onclick="turnOnDisplay()">
+        <div id="display-overlay-content">
+          <div class="overlay-text">Touch anywhere to turn on display</div>
+          <div class="overlay-icon">
+            <img src="{% static '3960289.png' %}" alt="DVD Logo">
+          </div>
+        </div>
+      </div>
+      <!-- Shutdown Overlay -->
+      <div id="shutdown-overlay">
+        <div class="shutdown-text">Please unplug and replug in your device to turn on again</div>
+      </div>
+
+      <!-- Navigation Bar -->
+      <nav>
+        <ul>
+          <li><a href="{% url 'index' %}">Home</a></li>
+          <li><a href="{% url 'add_recipe' %}">Add Recipe</a></li>
+          {% if user.is_authenticated %}
+            <li><a href="{% url 'favorites' %}">My Favorites</a></li>
+          {% endif %}
+          <li class="nav-right">
+            <button type="button" onclick="window.location.reload()">Refresh</button>
+            <a href="/admin/">Admin</a>
+            <button onclick="shutdownDevice()">Shutdown Device</button>
+            <button onclick="turnOffDisplay()">Turn Off Display</button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Home Header Section -->
+      <header class="home-header" style="background-image: url('{{ home_page.background_image.url }}');">
+        <div class="overlay">
+          <div class="header-content">
+            <h1>{% if home_page %}{{ home_page.title }}{% else %}Westbrook Recipes{% endif %}</h1>
+            <button class="view-recipes" onclick="scrollToRecipes()">View Recipes</button>
+            <div class="header-search">
+              <form id="search-form" method="GET" action="">
+                <input type="text" id="search-input" name="q" placeholder="Search anything..." autocomplete="off" value="{{ query }}">
+                <input type="hidden" id="meal-hidden" name="meal" value="{{ meal_filter }}">
+                <button type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Recipes Section -->
+      <section id="recipes-section">
+        <h2>Recipes</h2>
+        {% if recipes %}
+          <ul class="recipe-list">
+            {% for recipe in recipes %}
+              <li class="recipe-post {% if forloop.counter0|divisibleby:"2" %}recipe-left{% else %}recipe-right{% endif %}">
+                <div class="recipe-header">
+                  <div class="recipe-title">{{ recipe.title }}</div>
+                  {% if user.is_authenticated %}
+                    {% if user in recipe.favorites.all %}
+                      <a class="favorite-link" href="{% url 'toggle_favorite' recipe.id %}">Unfavorite</a>
+                    {% else %}
+                      <a class="favorite-link" href="{% url 'toggle_favorite' recipe.id %}">Favorite</a>
+                    {% endif %}
+                  {% endif %}
+                </div>
+                <div class="recipe-instructions">
+                  {{ recipe.instructions|safe }}
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+          <div style="clear: both;"></div>
+        {% else %}
+          <p>No recipes found.</p>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+
+  <!-- Dual-Panel On-Screen Keyboard -->
+  <div id="onscreen-keyboard" class="onscreen-keyboard">
+    <!-- Alphabet Panel -->
+    <div id="alphabet-panel">
+      <div class="keyboard-row">
+        <button class="key">q</button><button class="key">w</button><button class="key">e</button><button class="key">r</button><button class="key">t</button><button class="key">y</button><button class="key">u</button><button class="key">i</button><button class="key">o</button><button class="key">p</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key">a</button><button class="key">s</button><button class="key">d</button><button class="key">f</button><button class="key">g</button><button class="key">h</button><button class="key">j</button><button class="key">k</button><button class="key">l</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key shift-btn">Shift</button><button class="key">z</button><button class="key">x</button><button class="key">c</button><button class="key">v</button><button class="key">b</button><button class="key">n</button><button class="key">m</button><button class="key" data-key="backspace">Backspace</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key key-large" data-key="space">Space</button>
+        <button class="key key-large" id="toggle-symbols-btn">Symbols</button>
+        <button class="key key-large" data-key="hide keyboard">Hide Keyboard</button>
+      </div>
+    </div>
+    <!-- Symbols Panel -->
+    <div id="symbols-panel" style="display: none;">
+      <div class="keyboard-row">
+        <button class="key">1</button><button class="key">2</button><button class="key">3</button><button class="key">4</button><button class="key">5</button><button class="key">6</button><button class="key">7</button><button class="key">8</button><button class="key">9</button><button class="key">0</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key">-</button><button class="key">=</button><button class="key">[</button><button class="key">]</button><button class="key">\</button><button class="key">;</button><button class="key">'</button><button class="key">,</button><button class="key">.</button><button class="key">/</button><button class="key">*</button><button class="key">+</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key">~</button><button class="key">!</button><button class="key">@</button><button class="key">#</button><button class="key">$</button><button class="key">%</button><button class="key">^</button><button class="key">&amp;</button><button class="key">*</button><button class="key">(</button><button class="key">)</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key">_</button><button class="key">+</button><button class="key">{</button><button class="key">}</button><button class="key">|</button><button class="key">:</button><button class="key">"</button><button class="key">&lt;</button><button class="key">&gt;</button><button class="key">?</button>
+      </div>
+      <div class="keyboard-row">
+        <button class="key" id="toggle-alphabet-btn">ABC</button>
+        <button class="key key-large" data-key="hide keyboard">Hide Keyboard</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var mealTypes = ["breakfast","lunch","dinner","dessert"];
+      $("#search-input").autocomplete({
+        source: mealTypes,
+        select: function(event, ui) {
+          $("#meal-hidden").val(ui.item.value);
+          $("#search-form").submit();
+        }
+      });
+    });
+
+    function turnOffDisplay() {
+      var overlay = document.getElementById("display-off-overlay");
+      overlay.style.display = "block";
+      document.querySelector("#display-overlay-content .overlay-text").innerText = "Touch anywhere to turn on display";
+    }
+    function turnOnDisplay() {
+      document.getElementById("display-off-overlay").style.display = "none";
+    }
+    function shutdownDevice() {
+      var overlay = document.getElementById("shutdown-overlay");
+      overlay.style.display = "block";
+      setTimeout(function() {
+        fetch('/shutdown/', { method: 'POST' })
+          .then(response => console.log("Shutdown command issued"))
+          .catch(error => console.error("Error issuing shutdown:", error));
+      }, 5000);
+    }
+    function scrollToRecipes(){
+      smoothScrollContainer($("#child")[0], $("#recipes-section")[0].offsetTop, 800);
+    }
+    function smoothScrollContainer(container,target,duration){
+      var start=container.scrollTop,change=target-start,startTime=performance.now();
+      function easeInOutQuad(t){ return t<0.5?2*t*t:-1+(4-2*t)*t; }
+      function animate(now){
+        var elapsed=now-startTime,progress=Math.min(elapsed/duration,1),eased=easeInOutQuad(progress);
+        container.scrollTop=start+change*eased;
+        if(elapsed<duration) requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      document.addEventListener("focusin", function(e){
+        if(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"){
+          document.getElementById("onscreen-keyboard").style.display="block";
+        }
+      });
+      let isShiftActive=false;
+      const shiftBtn=document.querySelector('.shift-btn');
+      document.querySelectorAll('#alphabet-panel .key').forEach(btn=>{
+        btn.addEventListener('click', function(){
+          if(this.id==='toggle-symbols-btn') return;
+          let input=document.getElementById("search-input");
+          if(!input) return;
+          const key=this.getAttribute('data-key')||this.innerText;
+          if(key.toLowerCase()==="hide keyboard"){
+            document.getElementById("onscreen-keyboard").style.display="none"; return;
+          }
+          if(key.toLowerCase()==="backspace"){
+            input.value=input.value.slice(0,-1); input.focus(); return;
+          }
+          if(key.toLowerCase()==="space"){
+            input.value+=" "; input.focus(); return;
+          }
+          if(this.classList.contains("shift-btn")){
+            isShiftActive=!isShiftActive; toggleShiftMode(isShiftActive); return;
+          }
+          input.value+=key; input.focus();
+          if(isShiftActive&&this!==shiftBtn){ isShiftActive=false; toggleShiftMode(false); }
+        });
+      });
+      function toggleShiftMode(enabled){
+        shiftBtn.classList.toggle("shift-active",enabled);
+        document.querySelectorAll("#alphabet-panel .key:not([data-key])").forEach(k=>{
+          k.innerText=enabled?k.innerText.toUpperCase():k.innerText.toLowerCase();
+        });
+      }
+      document.querySelectorAll("#symbols-panel .key").forEach(btn=>{
+        btn.addEventListener("click", function(){
+          if(this.id==='toggle-alphabet-btn') return;
+          let input=document.getElementById("search-input");
+          if(!input) return;
+          const key=this.getAttribute("data-key")||this.innerText;
+          if(key.toLowerCase()==="hide keyboard"){
+            document.getElementById("onscreen-keyboard").style.display="none"; return;
+          }
+          if(key.toLowerCase()==="backspace"){
+            input.value=input.value.slice(0,-1); input.focus(); return;
+          }
+          if(key.toLowerCase()==="space"){
+            input.value+=" "; input.focus(); return;
+          }
+          input.value+=key; input.focus();
+        });
+      });
+      document.getElementById("toggle-symbols-btn").addEventListener("click", function(){
+        document.getElementById("alphabet-panel").style.display="none";
+        document.getElementById("symbols-panel").style.display="block";
+      });
+      document.getElementById("toggle-alphabet-btn").addEventListener("click", function(){
+        document.getElementById("symbols-panel").style.display="none";
+        document.getElementById("alphabet-panel").style.display="block";
+      });
+      (function(){
+        const kb=document.getElementById("onscreen-keyboard");
+        let dragging=false,startX,startY,origX,origY;
+        kb.addEventListener("mousedown",function(e){
+          if(e.target.classList.contains("key")) return;
+          dragging=true; startX=e.clientX; startY=e.clientY;
+          origX=kb.offsetLeft; origY=kb.offsetTop; e.preventDefault();
+        });
+        document.addEventListener("mousemove",function(e){
+        });
+        document.addEventListener("mouseup",function(){ dragging=false; });
+      })();
+      (function() {
+        var overlayContent = document.getElementById("display-overlay-content");
+        var container = document.getElementById("display-off-overlay");
+        var velocityX = (Math.random() * 0.5 + 0.5) * (Math.random() < 0.5 ? 1 : -1);
+        var velocityY = (Math.random() * 0.5 + 0.5) * (Math.random() < 0.5 ? 1 : -1);
+        var posX = 0, posY = 0;
+        function animateOverlayContent() {
+          if (container.style.display === "block") {
+            var containerWidth = container.clientWidth;
+            var containerHeight = container.clientHeight;
+            var contentWidth = overlayContent.offsetWidth;
+            var contentHeight = overlayContent.offsetHeight;
+            posX += velocityX;
+            posY += velocityY;
+            if (posX <= 0 || posX + contentWidth >= containerWidth) {
+              velocityX = -velocityX;
+              posX = Math.max(0, Math.min(posX, containerWidth - contentWidth));
+            }
+            if (posY <= 0 || posY + contentHeight >= containerHeight) {
+              velocityY = -velocityY;
+              posY = Math.max(0, Math.min(posY, containerHeight - contentHeight));
+            }
+            overlayContent.style.left = posX + "px";
+            overlayContent.style.top = posY + "px";
+          }
+          requestAnimationFrame(animateOverlayContent);
+        }
+        requestAnimationFrame(animateOverlayContent);
+      })();
+      if(window.location.search.indexOf("q=")!==-1) setTimeout(scrollToRecipes,300);
+    });
+  </script>
+</body>
+</html>
+<!---->

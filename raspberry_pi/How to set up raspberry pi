@@ -1,0 +1,86 @@
+# Raspberry Pi Kiosk Setup
+
+Chat gpt wrote this and I'm like 100% sure that this is now how we do it. 
+
+
+The Raspberry Pi now only runs the Wi-Fi portal. The recipe site itself is hosted separately on Oracle Cloud.
+
+1. **Update the OS**
+   ```bash
+   sudo apt update
+   sudo apt full-upgrade
+   sudo apt install python3-venv curl chromium-browser
+   ```
+
+2. **Clone the project**
+   ```bash
+   cd ~/Downloads
+   git clone https://github.com/Iisyourdad/oracle_recipe_pi.git
+   cd oracle_recipe_pi/raspberry_pi
+   ```
+
+3. **Create a virtual environment** (optional but recommended)
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install django
+   ```
+
+4. **Test the Wi-Fi portal**
+   ```bash
+   ./start_wifi_portal.sh
+   # visit http://127.0.0.1:8000/ from Chromium on the Pi
+   ```
+
+5. **Configure kiosk mode**
+   - Copy `raspberry_pi/run_kiosk.sh` to a convenient location (for example `/home/pi/run_kiosk.sh`).
+   - Make it executable: `chmod +x ~/run_kiosk.sh`.
+   - Edit `REMOTE_URL` inside `/home/pi/run_kiosk.sh` or export the variable in `/etc/environment` so it points to your Oracle deployment.
+
+6. **Create a systemd service for the Wi-Fi portal** (if you want it to start on boot when offline)
+   ```ini
+   [Unit]
+   Description=Raspberry Pi Wi-Fi Portal
+   After=network.target
+
+   [Service]
+   WorkingDirectory=/home/pi/oracle_recipe_pi/raspberry_pi
+   Environment="PYTHON_BIN=/home/pi/oracle_recipe_pi/raspberry_pi/venv/bin/python"
+   ExecStart=/home/pi/oracle_recipe_pi/raspberry_pi/start_wifi_portal.sh
+   Restart=on-failure
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+   Save as `/etc/systemd/system/pi-wifi-portal.service`, then run:
+   ```bash
+   sudo systemctl daemon-reload
+   sudo systemctl enable pi-wifi-portal.service
+   sudo systemctl start pi-wifi-portal.service
+   ```
+
+7. **Create a user service for kiosk Chromium**
+   ```ini
+   [Unit]
+   Description=Chromium kiosk for recipe machine
+   After=graphical-session.target
+
+   [Service]
+   ExecStart=/bin/bash /home/pi/run_kiosk.sh
+   Restart=on-failure
+
+   [Install]
+   WantedBy=default.target
+   ```
+   Save the file as `~/.config/systemd/user/kiosk.service`, then run:
+   ```bash
+   systemctl --user daemon-reload
+   systemctl --user enable kiosk.service
+   systemctl --user start kiosk.service
+   ```
+   Finally, enable lingering so the user service starts automatically:
+   ```bash
+   sudo loginctl enable-linger pi
+   ```
+
+The rest of your existing touch-screen, splash-screen, and display settings can stay the same.

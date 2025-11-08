@@ -1,0 +1,80 @@
+<!-- templates/recipes/connecting.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Connecting…</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f5f5f5;
+      font-family: sans-serif;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .spinner {
+      border: 8px solid #eee;
+      border-top: 8px solid #4285F4;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    h2 {
+      margin-top: 1rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="spinner"></div>
+    <h2>Connecting…</h2>
+  </div>
+  <script>
+    function getCookie(name) {
+      const match = document.cookie.split('; ').find(row => row.startsWith(name + '='));
+      return match ? decodeURIComponent(match.split('=')[1]) : '';
+    }
+
+    const failTimer = setTimeout(() => {
+      window.location.href = '/?error=' + encodeURIComponent('Failed to connect');
+    }, 15000);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch("{% url 'wifi_do_connect' %}", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({
+          ssid: "{{ ssid|escapejs }}",
+          password: "{{ password|escapejs }}"
+        })
+      })
+      .then(r => r.json())
+      .then(d => {
+        clearTimeout(failTimer);
+        if (d.status === 'ok') {
+          window.location.href = "{% url 'configured' %}";
+        } else {
+          window.location.href = '/?error=' + encodeURIComponent(d.error || 'Failed to connect');
+        }
+      })
+      .catch(() => {
+        clearTimeout(failTimer);
+        window.location.href = '/?error=' + encodeURIComponent('Fetch error');
+      });
+    });
+  </script>
+</body>
+</html>
