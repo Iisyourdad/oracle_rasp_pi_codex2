@@ -95,6 +95,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+DEFAULT_BACKGROUND_IMAGE = 'backgrounds/istockphoto-517488802-612x612_p7wh3mq.jpg'
 
 # CKEditor uploader configuration
 CKEDITOR_UPLOAD_PATH = "uploads/"
