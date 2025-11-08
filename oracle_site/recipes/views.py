@@ -7,8 +7,31 @@ from django.http import HttpResponse, JsonResponse
 import os
 import subprocess
 
-from .models import HomePage, Recipe, Instruction
+from .models import HomePage, Recipe, Instruction, UserProfile
 from .forms import RecipeForm, IngredientForm, InstructionsForm
+
+def _get_background_image_url(request, home_page):
+    background_url = ""
+    if home_page and home_page.background_image:
+        try:
+            background_url = home_page.background_image.url
+        except ValueError:
+            background_url = ""
+
+    if request.user.is_authenticated:
+        try:
+            profile = request.user.profile
+        except UserProfile.DoesNotExist:
+            profile = None
+
+        if profile and profile.background_image:
+            try:
+                background_url = profile.background_image.url
+            except ValueError:
+                pass
+
+    return background_url
+
 
 def index(request):
     home_page = HomePage.objects.first()
@@ -38,6 +61,7 @@ def index(request):
         'recipes': recipes,
         'query': query or "",
         'meal_filter': "",
+        'background_image_url': _get_background_image_url(request, home_page),
     }
     return render(request, 'recipes/index.html', context)
 
@@ -91,6 +115,7 @@ def favorites(request):
         'recipes': recipes,
         'meal_filter': "",
         'query': "",
+        'background_image_url': _get_background_image_url(request, home_page),
     }
     return render(request, 'recipes/index.html', context)
 

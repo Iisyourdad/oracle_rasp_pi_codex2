@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import Group
-from .models import HomePage, Recipe, Ingredient, Instruction
+from .models import HomePage, Recipe, Ingredient, Instruction, UserProfile
 
 # --- ENABLE GROUPS IN ADMIN ---
 # If you previously unregistered it, register it back:
@@ -20,10 +20,23 @@ try:
 except admin.sites.NotRegistered:
     pass
 
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+    can_delete = False
+    fk_name = "user"
+    extra = 0
+
+
 @admin.register(User)
 class MyUserAdmin(UserAdmin):
     # keep default fieldsets but ensure these fields appear with dual selector UI
     filter_horizontal = ("groups", "user_permissions")
+    inlines = [UserProfileInline]
+
+    def get_inline_instances(self, request, obj=None):
+        if not obj:
+            return []
+        return super().get_inline_instances(request, obj)
 
 # --- your existing admins ---
 admin.site.site_header = "Westbrook Recipes Admin"
@@ -33,6 +46,12 @@ admin.site.index_title = "Welcome to Westbrook Recipes"
 @admin.register(HomePage)
 class HomePageAdmin(admin.ModelAdmin):
     list_display = ("title", "background_image")
+
+
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ("user", "background_image")
+    search_fields = ("user__username", "user__email")
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
