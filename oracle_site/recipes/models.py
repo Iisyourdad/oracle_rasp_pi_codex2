@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.db.utils import OperationalError, ProgrammingError
 
 class HomePage(models.Model):
     title = models.CharField(max_length=200, default="Westbrook Recipes")
@@ -20,25 +19,15 @@ class UserProfile(models.Model):
         return f"{self.user.username}'s profile"
 
 
-def _ensure_user_profile(user: User) -> None:
-    try:
-        UserProfile.objects.get_or_create(user=user)
-    except (OperationalError, ProgrammingError):
-        # The auth_user save signal is triggered during migrations before the
-        # recipes_userprofile table exists. Swallow the error so the save can
-        # complete and the profile will be created on the next save.
-        pass
-
-
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        _ensure_user_profile(instance)
+        UserProfile.objects.create(user=instance)
 
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    _ensure_user_profile(instance)
+    UserProfile.objects.get_or_create(user=instance)
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)

@@ -22,7 +22,7 @@ def _get_background_image_url(request, home_page):
     if request.user.is_authenticated:
         try:
             profile = request.user.profile
-        except (UserProfile.DoesNotExist, OperationalError, ProgrammingError, AttributeError):
+        except UserProfile.DoesNotExist:
             profile = None
 
         if profile and profile.background_image:
