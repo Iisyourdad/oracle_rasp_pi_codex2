@@ -192,13 +192,35 @@
       });
     });
 
+    var inactivityTimer;
+    var INACTIVITY_LIMIT_MS = 60 * 60 * 1000; // 1 hour
+
     function turnOffDisplay() {
       var overlay = document.getElementById("display-off-overlay");
       overlay.style.display = "block";
       document.querySelector("#display-overlay-content .overlay-text").innerText = "Touch anywhere to turn on display";
+      clearTimeout(inactivityTimer);
     }
     function turnOnDisplay() {
       document.getElementById("display-off-overlay").style.display = "none";
+      resetInactivityTimer();
+    }
+    function resetInactivityTimer() {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(function() {
+        turnOffDisplay();
+      }, INACTIVITY_LIMIT_MS);
+    }
+    function registerInactivityListeners() {
+      var events = ['mousemove', 'keydown', 'touchstart', 'touchmove', 'click'];
+      events.forEach(function(evt) {
+        document.addEventListener(evt, resetInactivityTimer, { passive: true });
+      });
+      window.addEventListener('scroll', resetInactivityTimer, { passive: true });
+      var scrollContainer = document.getElementById('child');
+      if (scrollContainer) {
+        scrollContainer.addEventListener('scroll', resetInactivityTimer, { passive: true });
+      }
     }
     function shutdownDevice() {
       var overlay = document.getElementById("shutdown-overlay");
@@ -253,6 +275,8 @@
         }
         requestAnimationFrame(animateOverlayContent);
       })();
+      registerInactivityListeners();
+      resetInactivityTimer();
       if(window.location.search.indexOf("q=")!==-1) setTimeout(scrollToRecipes,300);
     });
   </script>
