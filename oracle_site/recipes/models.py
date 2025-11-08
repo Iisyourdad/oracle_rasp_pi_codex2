@@ -2,10 +2,20 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class HomePage(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name="home_page",
+        blank=True,
+        null=True,
+        help_text="Assign a user to provide them with a custom home page. Leave blank for the default home page.",
+    )
     title = models.CharField(max_length=200, default="Westbrook Recipes")
     background_image = models.ImageField(upload_to="backgrounds/", blank=True, null=True)
 
     def __str__(self):
+        if self.user:
+            return f"{self.title} ({self.user.username})"
         return self.title
 
 class Ingredient(models.Model):

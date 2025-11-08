@@ -32,7 +32,8 @@ admin.site.index_title = "Welcome to Westbrook Recipes"
 
 @admin.register(HomePage)
 class HomePageAdmin(admin.ModelAdmin):
-    list_display = ("title", "background_image")
+    list_display = ("title", "user", "background_image")
+    search_fields = ("title", "user__username")
 
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
