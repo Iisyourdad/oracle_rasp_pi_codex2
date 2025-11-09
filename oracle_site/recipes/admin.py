@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import Group
 from django.conf import settings
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.template.response import TemplateResponse
 from django.urls import path, reverse
@@ -169,6 +170,9 @@ def _purge_deleted_file(deleted_root, relative_path):
 
 
 def media_library_view(request):
+    if not request.user.is_superuser:
+        raise PermissionDenied("Only superusers can access the media library.")
+
     base_dir = Path(settings.MEDIA_ROOT)
     base_dir.mkdir(parents=True, exist_ok=True)
     deleted_root = base_dir / DELETED_DIR_NAME
@@ -243,8 +247,12 @@ admin.site.get_urls = _media_library_urls(admin.site.get_urls)
 
 _original_get_app_list = admin.site.get_app_list
 
-def _media_app_list(request):
+def _media_app_list(request, app_label=None):
     app_list = list(_original_get_app_list(request))
+    if app_label:
+        app_list = [app for app in app_list if app.get("app_label") == app_label]
+    if not request.user.is_superuser:
+        return app_list
     media_url = reverse("admin:media-library")
     media_entry = {
         "name": "Media",
@@ -261,7 +269,8 @@ def _media_app_list(request):
             }
         ],
     }
-    if not any(app.get("app_label") == "media_tools" for app in app_list):
+    should_append = not app_label or app_label == "media_tools"
+    if should_append and not any(app.get("app_label") == "media_tools" for app in app_list):
         app_list.append(media_entry)
     return app_list
 

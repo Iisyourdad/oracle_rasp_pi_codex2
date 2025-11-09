@@ -184,6 +184,6 @@ SECURE_HSTS_SECONDS = 60 * 60 * 24 * 30 if not DEBUG else 0
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = not DEBUG
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+CSRF_FAILURE_VIEW = "recipes.views.csrf_failure"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-

@@ -152,6 +152,7 @@
         <button class="key key-large" data-key="space">Space</button>
         <button class="key key-large" id="toggle-symbols-btn">Symbols</button>
         <button class="key key-large" data-key="hide keyboard">Hide Keyboard</button>
+        <button class="key key-large key-enter" data-key="enter">Enter</button>
       </div>
     </div>
     <!-- Symbols Panel -->
@@ -193,7 +194,32 @@
     });
 
     var inactivityTimer;
-    var INACTIVITY_LIMIT_MS = 60 * 60 * 1000 * 20 * 60; // 1 hour
+    var INACTIVITY_LIMIT_MS = 60 * 60 * 1000; // 1 hour
+
+    var SCROLL_NUDGE_INITIAL_DELAY = 5000;
+    var SCROLL_NUDGE_REPEAT_DELAY = 30000;
+    var SCROLL_NUDGE_MAX_RUNS = 4;
+    var SCROLL_NUDGE_DEPTH = 250;
+    var scrollNudgeDisabled = false;
+
+    function disableScrollNudge() {
+      scrollNudgeDisabled = true;
+    }
+
+    document.addEventListener('click', function(event) {
+      var anchor = event.target.closest('a');
+      if (anchor && anchor.getAttribute('href')) {
+        disableScrollNudge();
+      }
+    }, true);
+    document.addEventListener('submit', function() {
+      disableScrollNudge();
+    }, true);
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'hidden') {
+        disableScrollNudge();
+      }
+    });
 
     function turnOffDisplay() {
       var overlay = document.getElementById("display-off-overlay");
@@ -216,10 +242,14 @@
       events.forEach(function(evt) {
         document.addEventListener(evt, resetInactivityTimer, { passive: true });
       });
-      window.addEventListener('scroll', resetInactivityTimer, { passive: true });
+      function handleScrollActivity() {
+        disableScrollNudge();
+        resetInactivityTimer();
+      }
+      window.addEventListener('scroll', handleScrollActivity, { passive: true });
       var scrollContainer = document.getElementById('child');
       if (scrollContainer) {
-        scrollContainer.addEventListener('scroll', resetInactivityTimer, { passive: true });
+        scrollContainer.addEventListener('scroll', handleScrollActivity, { passive: true });
       }
     }
     function shutdownDevice() {
@@ -234,15 +264,62 @@
     function scrollToRecipes(){
       smoothScrollContainer($("#child")[0], $("#recipes-section")[0].offsetTop, 800);
     }
-    function smoothScrollContainer(container,target,duration){
+    function smoothScrollContainer(container,target,duration,onComplete){
       var start=container.scrollTop,change=target-start,startTime=performance.now();
       function easeInOutQuad(t){ return t<0.5?2*t*t:-1+(4-2*t)*t; }
       function animate(now){
         var elapsed=now-startTime,progress=Math.min(elapsed/duration,1),eased=easeInOutQuad(progress);
         container.scrollTop=start+change*eased;
-        if(elapsed<duration) requestAnimationFrame(animate);
+        if(elapsed<duration){
+          requestAnimationFrame(animate);
+        } else if (typeof onComplete === "function") {
+          onComplete();
+        }
       }
       requestAnimationFrame(animate);
+    }
+
+    function playScrollNudge() {
+      var container = document.getElementById("child");
+      if (!container || scrollNudgeDisabled) {
+        return false;
+      }
+      if (container.scrollTop > 10) {
+        disableScrollNudge();
+        return false;
+      }
+      var maxDepth = Math.max(0, container.scrollHeight - container.clientHeight);
+      var depth = Math.min(SCROLL_NUDGE_DEPTH, maxDepth);
+      if (depth <= 0) {
+        return false;
+      }
+      smoothScrollContainer(container, depth, 800, function() {
+        smoothScrollContainer(container, 0, 800);
+      });
+      return true;
+    }
+
+    function scheduleScrollNudges() {
+      var runs = 0;
+      function queueAttempt(delay) {
+        if (runs >= SCROLL_NUDGE_MAX_RUNS || scrollNudgeDisabled) {
+          return;
+        }
+        setTimeout(function attempt() {
+          if (runs >= SCROLL_NUDGE_MAX_RUNS || scrollNudgeDisabled) {
+            return;
+          }
+          if (playScrollNudge()) {
+            runs += 1;
+            if (runs < SCROLL_NUDGE_MAX_RUNS) {
+              queueAttempt(SCROLL_NUDGE_REPEAT_DELAY);
+            }
+          } else {
+            queueAttempt(5000);
+          }
+        }, delay);
+      }
+      queueAttempt(SCROLL_NUDGE_INITIAL_DELAY);
     }
 
     document.addEventListener('DOMContentLoaded', function(){
@@ -277,6 +354,7 @@
       })();
       registerInactivityListeners();
       resetInactivityTimer();
+      scheduleScrollNudges();
       if(window.location.search.indexOf("q=")!==-1) setTimeout(scrollToRecipes,300);
     });
   </script>

@@ -114,6 +114,36 @@
       input.focus({ preventScroll: true });
     }
 
+    function submitParentForm(input) {
+      if (!input || !input.form) {
+        return false;
+      }
+      const form = input.form;
+      if (typeof form.requestSubmit === 'function') {
+        form.requestSubmit();
+      } else {
+        form.submit();
+      }
+      return true;
+    }
+
+    function handleEnterKey() {
+      const input = ensureActiveInput();
+      if (!input) {
+        return;
+      }
+      const tag = input.tagName ? input.tagName.toLowerCase() : '';
+      const allowNewline = tag === 'textarea' || input.dataset.allowEnterNewline === 'true';
+      if (allowNewline) {
+        insertText('\n');
+        return;
+      }
+      if (submitParentForm(input)) {
+        return;
+      }
+      insertText('\n');
+    }
+
     function handleBackspace() {
       const input = ensureActiveInput();
       if (!input) {
@@ -142,6 +172,10 @@
       }
       if (normalized === 'space') {
         insertText(' ');
+        return;
+      }
+      if (normalized === 'enter') {
+        handleEnterKey();
         return;
       }
       if (keyElement === shiftBtn) {

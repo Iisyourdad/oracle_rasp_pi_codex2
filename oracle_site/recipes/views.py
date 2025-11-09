@@ -32,7 +32,7 @@ def _get_background_image_url(home_page):
 def index(request):
     home_page = _get_home_page_for_request(request)
     background_image_url = _get_background_image_url(home_page)
-    recipes = Recipe.objects.all()
+    recipes = Recipe.objects.order_by("?")
     query = request.GET.get('q')
     meal_types = ['breakfast', 'lunch', 'dinner', 'dessert']
     if query:
@@ -177,3 +177,14 @@ def add_intructions(request):
             messages.success(request, "Instructions added successfully!")
             return redirect("instructions")
     return render(request, "recipes/add_instructions.html", {'form': form})
+
+
+def csrf_failure(request, reason=""):
+    """
+    Render a friendly message when uploads trigger Django's CSRF failure page.
+    Reason is still provided for debugging, but the UI focuses on image guidance.
+    """
+    context = {
+        "reason": reason,
+    }
+    return render(request, "recipes/csrf_image_error.html", context, status=403)
