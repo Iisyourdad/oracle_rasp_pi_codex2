@@ -1,0 +1,6 @@
+git init
+heroku git:remote -a tyler-recipe-app-1
+
+git add .
+git commit -am "allowed host update"
+git push heroku master:main

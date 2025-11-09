@@ -9,7 +9,7 @@ DEBUG_PROPAGATE_EXCEPTIONS = False
 
 DEBUG = True
 
-ALLOWED_HOSTS = ["recipe.swestbrook.org", "141.148.137.228", "localhost", '127.0.0.1']
+ALLOWED_HOSTS = ["recipe.swestbrook.org", "141.148.137.228", "localhost", '127.0.0.1', 'tyler-recipe-app-1-62732e39277f.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = ['https://recipe.swestbrook.org']
 
