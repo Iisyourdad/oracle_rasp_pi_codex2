@@ -2,7 +2,42 @@ git init
 heroku git:remote -a tyler-recipe-app-1
 
 git add .
-git commit -am "allowed host update"
+git commit -am "test backup2"
 git push heroku master:main
 
-heroku config:set DJANGO_DEBUG=False
+heroku config:set DJANGO_DEBUG=True
+
+
+
+to upload withut wiping server.
+
+"""
+backup database
+
+heroku run -- python manage.py dumpdata --natural-foreign --natural-primary --indent 2 --skip-checks > backup/fixtures/recipes.json
+git add backup/fixtures/recipes.json
+git commit -m "Backup recipes DB"
+
+
+backup media (images, backgrounds, uploads)
+
+heroku run --no-tty -- bash -c "mkdir -p media && tar -C media -cf - ." > backup/media/media.tar
+rm -rf media
+mkdir media
+tar -xf backup/media/media.tar -C media
+
+
+
+restoring
+
+# First push code + backups so Heroku has them
+git push heroku master:main
+
+# Restore DB contents
+heroku run --no-tty -- python manage.py loaddata backup/fixtures/recipes.json
+
+# Restore media back onto the dyno
+cat backup/media/media.tar | heroku run --no-tty -- bash -c "mkdir -p media && tar -C media -xf -"
+
+
+"""

@@ -1,0 +1,109 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Media Library" %}{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    <h1>{% trans "Media Library" %}</h1>
+    <p class="help">
+      {% blocktrans with root=media_root %}Files are served from {{ root }}. Deleting an image moves it to the deleted images folder where it can be restored or purged later.{% endblocktrans %}
+    </p>
+
+    {% if directories %}
+      <form method="get" class="media-filter">
+        <label for="id_dir">{% trans "Folder" %}</label>
+        <select name="dir" id="id_dir" onchange="this.form.submit()">
+          <option value="">{% trans "All folders" %}</option>
+          {% for directory in directories %}
+            <option value="{{ directory }}" {% if directory == selected_dir %}selected{% endif %}>{{ directory }}</option>
+          {% endfor %}
+        </select>
+        {% if selected_dir %}
+          <a href="{% url 'admin:media-library' %}" class="button">{% trans "Reset" %}</a>
+        {% endif %}
+      </form>
+    {% endif %}
+
+    <h2>{% trans "Active Images" %}</h2>
+    {% if files %}
+      <table class="listing">
+        <thead>
+          <tr>
+            <th scope="col">{% trans "File" %}</th>
+            <th scope="col">{% trans "Size" %}</th>
+            <th scope="col">{% trans "Preview" %}</th>
+            <th scope="col">{% trans "Actions" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for file in files %}
+            <tr>
+              <th scope="row">
+                <a href="{{ file.url }}" target="_blank" rel="noopener noreferrer">{{ file.relative }}</a>
+              </th>
+              <td>{{ file.size|filesizeformat }}</td>
+              <td>
+                <img src="{{ file.url }}" alt="{{ file.name }}" style="max-height:80px;max-width:120px;">
+              </td>
+              <td>
+                <form method="post" style="display:inline">
+                  {% csrf_token %}
+                  <input type="hidden" name="target" value="{{ file.relative }}">
+                  {% if selected_dir %}
+                    <input type="hidden" name="dir" value="{{ selected_dir }}">
+                  {% endif %}
+                  <input type="hidden" name="action" value="delete">
+                  <button type="submit" class="deletelink">{% trans "Move to deleted" %}</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>{% trans "No images found in the selected folder." %}</p>
+    {% endif %}
+
+    <h2 style="margin-top:2em;">{% trans "Deleted Images" %}</h2>
+    {% if deleted_files %}
+      <table class="listing">
+        <thead>
+          <tr>
+            <th scope="col">{% trans "File" %}</th>
+            <th scope="col">{% trans "Size" %}</th>
+            <th scope="col">{% trans "Preview" %}</th>
+            <th scope="col">{% trans "Actions" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for file in deleted_files %}
+            <tr>
+              <th scope="row">{{ file.relative }}</th>
+              <td>{{ file.size|filesizeformat }}</td>
+              <td>
+                <img src="{{ file.url }}" alt="{{ file.name }}" style="max-height:80px;max-width:120px;">
+              </td>
+              <td>
+                <form method="post" style="display:inline">
+                  {% csrf_token %}
+                  <input type="hidden" name="target" value="{{ file.relative }}">
+                  <input type="hidden" name="action" value="restore">
+                  <button type="submit" class="button">{% trans "Restore" %}</button>
+                </form>
+                <form method="post" style="display:inline">
+                  {% csrf_token %}
+                  <input type="hidden" name="target" value="{{ file.relative }}">
+                  <input type="hidden" name="action" value="purge">
+                  <button type="submit" class="deletelink">{% trans "Delete permanently" %}</button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>{% trans "No deleted images." %}</p>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -1,0 +1,4087 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "recipes",
+    "model": "homepage"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "recipes",
+    "model": "ingredient"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "recipes",
+    "model": "recipe"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "recipes",
+    "model": "instruction"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "3vwsdokxl5qnhg9nph0i7os3vwvknldf",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnxJ_5Q0nOGaO3dxQFkS3FSIe4OkVJA-2bmvcQE21qmrdMyzSjOQonT75YgP6juAO9Qb03mVtdlTnJX5EG7vDak5-Vw_w4K9PKtPSceDRKpMQc9RE5OsfY2M1uDLmLAYSBQEVy0GTwH44lZE3q0Jjjx_gAFNDiy:1tyJMa:EIGH2wN2H5OWfmrP67U1CN2WAngz4IfJBypbUrMrCAc",
+    "expire_date": "2025-04-11T23:43:48.507Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "5785m0gj1qat7jya2wx6ps3zuedn6ukx",
+  "fields": {
+    "session_data": ".eJxVjE0OwiAYBe_C2hBasIBL9z0D-f4qVQNJaVfGu2uTLnT7Zua9VIJtzWlrsqSZ1UWd1el3Q6CHlB3wHcqtaqplXWbUu6IP2vRYWZ7Xw_07yNDytw4UvAU_ATjpEGPvTWBitGYyzkYSFLG9BWbPzA5hIAak2IWhRzaDen8AFmY5dA:1vHaEi:bsi2Gc-PMD7woKPrlPHcp396SV0L5hBdWHpam2t-jvQ",
+    "expire_date": "2025-11-22T04:07:36.388Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "7li20k316w97fh44rj87fj44u1j09rri",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSGUKTC4dO83kOElVQNJaVfGf1eSLnR7zzn3xRztW3F7T6tbIjszxU6_m6fwSHWAeKd6azy0uq2L50PhB-382mJ6Xg7376BQL6NOXmqrUGmEAAo0GCMgG7Q2k7Qo1GRnnANp1JJAmSAj5hwmYb7MZ_b-ALD0Nq8:1u4MV2:7hyiGE9DUu1D81CdMIdHGdOS9_gVsPvWeStPFCMdYnA",
+    "expire_date": "2025-04-28T16:17:32.296Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "7z82b8xnpm27yucl8c9wctv1owd46cec",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnxJ_5Q0nOGaO3dxQFkS3FSIe4OkVJA-2bmvcQE21qmrdMyzSjOQonT75YgP6juAO9Qb03mVtdlTnJX5EG7vDak5-Vw_w4K9PKtPSceDRKpMQc9RE5OsfY2M1uDLmLAYSBQEVy0GTwH44lZE3q0Jjjx_gAFNDiy:1txGGk:t9zpsInSKD2lm3ZeZq2KX0zzY-j_8fi05TAkUnuF95I",
+    "expire_date": "2025-04-09T02:13:26.010Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "9z4zyx7xbptfln9e77fpqdwkfb4j7h4y",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnxJ_5Q0nOGaO3dxQFkS3FSIe4OkVJA-2bmvcQE21qmrdMyzSjOQonT75YgP6juAO9Qb03mVtdlTnJX5EG7vDak5-Vw_w4K9PKtPSceDRKpMQc9RE5OsfY2M1uDLmLAYSBQEVy0GTwH44lZE3q0Jjjx_gAFNDiy:1txdl9:UDmiWlZdnswWa7YL7R3T82_h5jRBd0t-ziHrL11anpY",
+    "expire_date": "2025-04-10T03:18:23.359Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "bdagr8z5nrs0zfs08um1573botkwccpt",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnxJ_5Q0nOGaO3dxQFkS3FSIe4OkVJA-2bmvcQE21qmrdMyzSjOQonT75YgP6juAO9Qb03mVtdlTnJX5EG7vDak5-Vw_w4K9PKtPSceDRKpMQc9RE5OsfY2M1uDLmLAYSBQEVy0GTwH44lZE3q0Jjjx_gAFNDiy:1txVeQ:RoQIXKgT1zPywjvJOkcDHmA_Up99knUY3lHb_1k-zc4",
+    "expire_date": "2025-04-09T18:38:54.366Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "dnqk2v5alunqrkx3lkor4jmikbyaruz2",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnxJ_5Q0nOGaO3dxQFkS3FSIe4OkVJA-2bmvcQE21qmrdMyzSjOQonT75YgP6juAO9Qb03mVtdlTnJX5EG7vDak5-Vw_w4K9PKtPSceDRKpMQc9RE5OsfY2M1uDLmLAYSBQEVy0GTwH44lZE3q0Jjjx_gAFNDiy:1txHfA:7LCxJhxOZBQbXdCiLaBZKC6bfd6lakLUpXC6ldah9I4",
+    "expire_date": "2025-04-09T03:42:44.570Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "do0s519sftie1rx7pskw6mvhu2ufwys0",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHyKENduvcbyAwMUjWQlHZl_HfbpAvd3nPOfYuA61LC2nkOUxIXMYjT70YYn1x3kB5Y703GVpd5Irkr8qBd3lri1_Vw_w4K9rLVjozxSRGRZtaejQftMVkawGGmAS1TNBnQ5nFzII-sPJwRdVQM2onPFwdHOMQ:1u1Td5:T8TVfLS29dJ7Dya_BGcKJdFjfhtDB39R8siNbW3BdlU",
+    "expire_date": "2025-04-20T17:17:55.086Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "dq0wv8fjjzu1qco80u0f8kew65kjdwwd",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHyKENduvcbyAwMUjWQlHZl_HfbpAvd3nPOfYuA61LC2nkOUxIXMYjT70YYn1x3kB5Y703GVpd5Irkr8qBd3lri1_Vw_w4K9rLVjozxSRGRZtaejQftMVkawGGmAS1TNBnQ5nFzII-sPJwRdVQM2onPFwdHOMQ:1u1Wur:ta0gaDRwq8qpI44ks0TI03MfUzLteK22zEpXXr8-RzI",
+    "expire_date": "2025-04-20T20:48:29.368Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "egyxmr3ebg31a22ue4ivib17vxo3ttwz",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyEISwGP3v0GsrCLVA1NSnsy_rtt0oMeZ96beYuI61Lj2nmOI4mLOIvTb5cwP7ntgB7Y7pPMU1vmMcldkQft8jYRv66H-3dQsddtXSApBdbwQJ44mOK1dwTKhIAIxoB2W8gGSsgE3mJxLmhVqGhtWQ3i8wXJ3Dci:1tzTtV:hlnVyjMJWTtd-19-90zT_afmHUx8rxGH_vWhfzs6cW0",
+    "expire_date": "2025-04-15T05:10:37.484Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "fckah9c2h00k6hdfetfll2to1h72l0fo",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnxJ_5Q0nOGaO3dxQFkS3FSIe4OkVJA-2bmvcQE21qmrdMyzSjOQonT75YgP6juAO9Qb03mVtdlTnJX5EG7vDak5-Vw_w4K9PKtPSceDRKpMQc9RE5OsfY2M1uDLmLAYSBQEVy0GTwH44lZE3q0Jjjx_gAFNDiy:1txSKr:OqEX4VUlzgYJ_q34zDhCs38Sg7C4UUUGaf7WQBAPgYs",
+    "expire_date": "2025-04-09T15:06:29.931Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "mlojcekansux10yvk47aro43ocxjv9j5",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGlnxJ_5Q0nOGaO3dxQFkS3FSIe4OkVJA-2bmvcQE21qmrdMyzSjOQonT75YgP6juAO9Qb03mVtdlTnJX5EG7vDak5-Vw_w4K9PKtPSceDRKpMQc9RE5OsfY2M1uDLmLAYSBQEVy0GTwH44lZE3q0Jjjx_gAFNDiy:1txykw:AzUwHIMtTbCZ3r7UDTL2B1f1_8BVsX3XpCQnbhDqeuQ",
+    "expire_date": "2025-04-11T01:43:34.281Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "th64bdwiz5dgw00q8ji2xsekxacnxsio",
+  "fields": {
+    "session_data": ".eJxVjEsOAiEQBe_C2hBAfrp07xlI093IqIFkmFkZ766TzEK3r6reSyRYl5rWwXOaSJyFEYffLQM-uG2A7tBuXWJvyzxluSlyp0NeO_Hzsrt_BxVG_dYRrVU2Y1RRoTWOgmePxOjB6BMrKMYrrXUhF0o2OhbvNTgX6ZhD5CLeH9qdN88:1ty2f4:yCpC_zDVIIGoLt6NmGnZRb4wZk_bCZni0XjoFh0U_ms",
+    "expire_date": "2025-04-11T05:53:46.153Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "thiw0p65enyutzskjtof29vlsq3mw10j",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWlaSpnWpXvOQIaZjkVNSSisjHcXEha6_e-9_1YDbmsetpqWYWJ1VY26_G4j0jOVA_ADy33WNJd1mUZ9KPqkVfczp9ftdP8OMta8176LDCZEMdZFiQSSAjqLLTReDGMc3U6ByErYPU6dIwgtoLABz6Q-X9LmN8c:1u2ym1:4t71yunwRc0qorOvNr1rRY6ZNwceSl--219unJBb7bM",
+    "expire_date": "2025-04-24T20:45:21.838Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "w9tr1omyap7mcifwh1hsu4qkasw0w825",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSGUKTC4dO83kOElVQNJaVfGf1eSLnR7zzn3xRztW3F7T6tbIjszxU6_m6fwSHWAeKd6azy0uq2L50PhB-382mJ6Xg7376BQL6NOXmqrUGmEAAo0GCMgG7Q2k7Qo1GRnnANp1JJAmSAj5hwmYb7MZ_b-ALD0Nq8:1u5vqH:zIemBzj0MnY2C6hsLY3Dpm9woZgSwJOyssQRuhSO-p8",
+    "expire_date": "2025-05-03T00:13:57.937Z"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": [
+      "admin",
+      "logentry"
+    ],
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view permission",
+    "content_type": [
+      "auth",
+      "permission"
+    ],
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view user",
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view content type",
+    "content_type": [
+      "contenttypes",
+      "contenttype"
+    ],
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view session",
+    "content_type": [
+      "sessions",
+      "session"
+    ],
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add home page",
+    "content_type": [
+      "recipes",
+      "homepage"
+    ],
+    "codename": "add_homepage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change home page",
+    "content_type": [
+      "recipes",
+      "homepage"
+    ],
+    "codename": "change_homepage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete home page",
+    "content_type": [
+      "recipes",
+      "homepage"
+    ],
+    "codename": "delete_homepage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view home page",
+    "content_type": [
+      "recipes",
+      "homepage"
+    ],
+    "codename": "view_homepage"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add ingredient",
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "codename": "add_ingredient"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change ingredient",
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "codename": "change_ingredient"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete ingredient",
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "codename": "delete_ingredient"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view ingredient",
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "codename": "view_ingredient"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add recipe",
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "codename": "add_recipe"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change recipe",
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "codename": "change_recipe"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete recipe",
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "codename": "delete_recipe"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view recipe",
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "codename": "view_recipe"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add instruction",
+    "content_type": [
+      "recipes",
+      "instruction"
+    ],
+    "codename": "add_instruction"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change instruction",
+    "content_type": [
+      "recipes",
+      "instruction"
+    ],
+    "codename": "change_instruction"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete instruction",
+    "content_type": [
+      "recipes",
+      "instruction"
+    ],
+    "codename": "delete_instruction"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view instruction",
+    "content_type": [
+      "recipes",
+      "instruction"
+    ],
+    "codename": "view_instruction"
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "Family (default)",
+    "permissions": [
+      [
+        "view_group",
+        "auth",
+        "group"
+      ],
+      [
+        "view_permission",
+        "auth",
+        "permission"
+      ],
+      [
+        "view_user",
+        "auth",
+        "user"
+      ],
+      [
+        "add_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "change_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "delete_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "view_contenttype",
+        "contenttypes",
+        "contenttype"
+      ],
+      [
+        "view_homepage",
+        "recipes",
+        "homepage"
+      ],
+      [
+        "add_ingredient",
+        "recipes",
+        "ingredient"
+      ],
+      [
+        "change_ingredient",
+        "recipes",
+        "ingredient"
+      ],
+      [
+        "delete_ingredient",
+        "recipes",
+        "ingredient"
+      ],
+      [
+        "view_ingredient",
+        "recipes",
+        "ingredient"
+      ],
+      [
+        "view_instruction",
+        "recipes",
+        "instruction"
+      ],
+      [
+        "add_recipe",
+        "recipes",
+        "recipe"
+      ],
+      [
+        "change_recipe",
+        "recipes",
+        "recipe"
+      ],
+      [
+        "delete_recipe",
+        "recipes",
+        "recipe"
+      ],
+      [
+        "view_recipe",
+        "recipes",
+        "recipe"
+      ],
+      [
+        "view_session",
+        "sessions",
+        "session"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$7a3alLeKKRDkey9EE97EUQ$T5tstZoz+tcvJr6VTot4Jz2JqIHmJKxJv710kpdrk/Q=",
+    "last_login": "2025-11-08T03:50:47.158Z",
+    "is_superuser": false,
+    "username": "tanslee",
+    "first_name": "",
+    "last_name": "",
+    "email": "tanslee.westbrook@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-03-28T01:44:11Z",
+    "groups": [
+      [
+        "Family (default)"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$5cBcUiMTAYfrrtqZO3LEn1$SF7Pdw3c+V4WQ11Or5WEOASebaoZb0nnUZY5L2RIgo0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "steve",
+    "first_name": "",
+    "last_name": "",
+    "email": "stwestbrook@swestbrook.org",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-03-28T01:44:39Z",
+    "groups": [
+      [
+        "Family (default)"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$IOKSUN2aqgKhvhNTBBf6dG$NMERaj5eRfkt/BMmmVmtGQUqKwOT/wZfErUZRQCMdmo=",
+    "last_login": "2025-11-08T04:07:36.381Z",
+    "is_superuser": true,
+    "username": "tyler",
+    "first_name": "",
+    "last_name": "",
+    "email": "tyler.westbrook1@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-06T03:06:57.024Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$TN3lNDQNEVTwaIOeYgbwHF$M5XBllpXekkNvGk9seKgtGvPmPRz2ERYPFh6oCk+2II=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "kyle",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-06T03:07:06Z",
+    "groups": [
+      [
+        "Family (default)"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$TIp3VvB96oVBuytnsMGM3y$7ey9pT4QfJgpdGETW1CDoleRL6DQKJBnY9Xpkpf4CoI=",
+    "last_login": "2025-11-08T03:55:39.157Z",
+    "is_superuser": false,
+    "username": "allison",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-06T03:07:19Z",
+    "groups": [
+      [
+        "Family (default)"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$Wqoq08NgnZqCszswWdtTT1$YnGowvzjN526Da5lgp9pxCBBbOplQA2aGQcg91Tw4Go=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "greg",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-06T03:07:28Z",
+    "groups": [
+      [
+        "Family (default)"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$Aco7OCf5ijFjEljfAJ46pd$g8VdO42JR9w4f4JDU6sE9snkZ9DlLKQmR9rUNfw5ssk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "amanda",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-06T03:07:38Z",
+    "groups": [
+      [
+        "Family (default)"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$600000$65ATsXkTAGYFNuSWHvxhhW$/kjC6Vz8RDFQoawQf2Yj3iSYPG+69aYp7EjQeAYFM5U=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "makenzy",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-06T03:08:12Z",
+    "groups": [
+      [
+        "Family (default)"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$mLu6tg1for6b8XRPMqcXZf$/pjDbiBL7ceqzGKTEwetw/YZOnFeGG5yH9IC+G1Rxuo=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "john",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-06T03:08:24Z",
+    "groups": [
+      [
+        "Family (default)"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$870000$uqzR40vVedPf0187dCjtwK$VVhFnxewaVqiDWo8scRT1BMNWjAax0jycFx3aFGp/+4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "sharon",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-04-06T03:08:37Z",
+    "groups": [
+      [
+        "Family (default)"
+      ]
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "recipes.homepage",
+  "pk": 4,
+  "fields": {
+    "user": null,
+    "title": "Westbrook Recipes",
+    "background_image": "backgrounds/istockphoto-517488802-612x612_p7wh3mq.jpg"
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 20,
+  "fields": {
+    "title": "Chocolate Chip Cookies",
+    "meal_type": "dessert",
+    "instructions": "<p>Preheat oven 365, middle rack, ungreased cookie sheet</p>\r\n\r\n<p>Cream together-</p>\r\n\r\n<ul>\r\n\t<li>1 cup butter flavored Crisco</li>\r\n\t<li>1 cup sugar</li>\r\n\t<li>1 cup brown sugar</li>\r\n</ul>\r\n\r\n<p>Add-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</p>\r\n\r\n<ul>\r\n\t<li>3 beaten eggs and 1 tsp vanilla flavoring</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Blend in blender- 2 cups flour</p>\r\n\r\n<ul>\r\n\t<li>2 cups oatmeal</li>\r\n\t<li>&frac12; tsp salt</li>\r\n\t<li>1 tsp baking powder</li>\r\n\t<li>1tp baking soda</li>\r\n</ul>\r\n\r\n<p>Add blended mixture to creamed mixture. Then add 1 bag of chocolate chips and 1 cup chopped pecans.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Bake for 9 minutes or until starting to brown. Cookies finish cooking as they cool.</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 21,
+  "fields": {
+    "title": "Buttermilk Waffles",
+    "meal_type": "breakfast",
+    "instructions": "<ul>\r\n\t<li>2 &frac14; cups all purpose flour</li>\r\n\t<li>1 tsp baking powder</li>\r\n\t<li>1 tsp salt</li>\r\n\t<li>1 tsp baking soda</li>\r\n\t<li>2 eggs beaten</li>\r\n\t<li>2 cups buttermilk</li>\r\n\t<li>12 tsp vanilla</li>\r\n\t<li>8 tbs butter melted</li>\r\n</ul>\r\n\r\n<p>Whisk together dry ingredients. &nbsp;Mix in wet ingredients and stir together well. If batter is to thick add a little buttermilk at a time. &nbsp;&nbsp;<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 22,
+  "fields": {
+    "title": "Cinnamon Rolls",
+    "meal_type": "breakfast",
+    "instructions": "<p>Make mommy bread<br />\r\n&bull; &nbsp;2 teaspoons ground cinnamon<br />\r\n&bull; &nbsp;2 cups dark brown sugar<br />\r\n&bull; &nbsp;&frac12; cup butter, softened<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Pecans and raisins&nbsp;<br />\r\n&bull; &nbsp;2 cups confectioners&#39; sugar<br />\r\n&bull; &nbsp;1 (3 ounce) package cream cheese, softened<br />\r\n&bull; &nbsp;1 tablespoon butter, softened<br />\r\n&bull; &nbsp;&frac12; teaspoon vanilla extract<br />\r\n&bull; &nbsp;3 tablespoons milk<br />\r\nDivide dough into two pieces. Roll each piece into a 12x9 inch rectangle. In a bowl, stir together the cinnamon and brown sugar. Spread each piece with half of the butter, half of the brown sugar and cinnamon mixture. Roll up dough, using a little water to seal the seam.<br />\r\nBake at 365 for 10-12 minutes. Until golden</p>\r\n\r\n<p>To make frosting; combine confectioner&#39;s sugar, cream cheese, butter and vanilla. Add milk gradually until frosting reaches a spreading consistency. Spread over warm (but not hot) cinnamon rolls.<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 23,
+  "fields": {
+    "title": "Grandpas’ Biscuits",
+    "meal_type": "breakfast",
+    "instructions": "<p>4 scoops (1/3 or &frac14; cup) self rising flower</p>\r\n\r\n<p>1/3 cup sugar</p>\r\n\r\n<p>&frac12; tbs baking powder</p>\r\n\r\n<p>1 tbs vegetable oil</p>\r\n\r\n<p>buttermilk</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>Add 1 tbs vegetable oil to pan and spread</li>\r\n\t<li>Add buttermilk. Enough for a firm consistency</li>\r\n\t<li>Sprinkle contents heavy with flour</li>\r\n\t<li>Hand form dough and turn in oil in dish covering both sides.</li>\r\n</ul>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 24,
+  "fields": {
+    "title": "Creamy Garlic Butter Tuscan Salmon",
+    "meal_type": "dinner",
+    "instructions": "<p>Salmon Fillets</p>\r\n\r\n<p>Salt and pepper</p>\r\n\r\n<p>2 tsp olive oil</p>\r\n\r\n<p>2 tbs butter</p>\r\n\r\n<p>6 cloves garlic, finely diced</p>\r\n\r\n<p>1 small yellow onion, diced</p>\r\n\r\n<p>1/3 cups white wine or chicken broth (I use more)</p>\r\n\r\n<p>T tbs Cornstarch</p>\r\n\r\n<p>5 oz jar sundried tomatoes in oil. Drained of oil</p>\r\n\r\n<p>2 cups half and half</p>\r\n\r\n<p>3 cups baby spinach ( 1 large package)</p>\r\n\r\n<p>&frac12; cup grated parmesan cheese</p>\r\n\r\n<p>T tbs fresh parsley chopped</p>\r\n\r\n<p>Cappers</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li>Sear fish in oil with salt and pepper</li>\r\n\t<li>Melt butter and remaining juices in pan. Add onion then garlic. Add 1/3 cups wine o rchicken broth. Bring to boil and reduce slightly. Add in sun dried tomatoes. Cook 2 minutes</li>\r\n\t<li>Reduce the heat to low and add the half and half mixed with cornstarch. Salt and pepper to taste. Bring to a gentle boil while stirring. Add the spinach, cover and stir till wilted. Add parmesan cheese</li>\r\n\t<li>Serve over penne pasta</li>\r\n</ul>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 25,
+  "fields": {
+    "title": "Krout Dogs",
+    "meal_type": "lunch",
+    "instructions": "<p>Heat oven to 360</p>\r\n\r\n<ul>\r\n\t<li>Hot dogs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>\r\n\t<li>Sour cream</li>\r\n\t<li>Bell pepper</li>\r\n\t<li>Onion</li>\r\n\t<li>Parsley</li>\r\n\t<li>Pepper</li>\r\n\t<li>Mozzarella</li>\r\n\t<li>Foil</li>\r\n\t<li>Sauerkraut</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ol>\r\n\t<li>Boil hotdogs</li>\r\n\t<li>Chop onions and bell pepper finely</li>\r\n\t<li>Add some pepper and parsley</li>\r\n\t<li>Add sour cream until lightly covered</li>\r\n\t<li>Build up hotdogs in bun and cover with cheese.</li>\r\n\t<li>Bake for 15 minutes</li>\r\n</ol>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 26,
+  "fields": {
+    "title": "Green Chile Stew",
+    "meal_type": "dinner",
+    "instructions": "<ul>\r\n\t<li>1 pot of cooked pinto beans</li>\r\n\t<li>1 lb ground beef</li>\r\n\t<li>1 medium onion chopped</li>\r\n\t<li>3 cloves garlic</li>\r\n\t<li>1 tsp cumin ( I add a lot more)</li>\r\n\t<li>2 chicken bouillon</li>\r\n\t<li>As much green chile as you like.</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>After the beans are done cooking brown the ground beef and add to crockpot. Add everything else and let cook for about an hour.</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 27,
+  "fields": {
+    "title": "Granny Coleslaw",
+    "meal_type": "dinner",
+    "instructions": "<p>Mix<br />\r\n&nbsp;</p>\r\n\r\n<p>Cabbage</p>\r\n\r\n<p>Carrots (sliced)</p>\r\n\r\n<p>Raisins</p>\r\n\r\n<p>Mayonnaise</p>\r\n\r\n<p>Salt/pepper</p>\r\n\r\n<p>Red wine<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 28,
+  "fields": {
+    "title": "Grandpas’ Recipe",
+    "meal_type": "dinner",
+    "instructions": "<p>Olive oil</p>\r\n\r\n<p>Chicken thighs</p>\r\n\r\n<p>Salt</p>\r\n\r\n<p>Penne noodles</p>\r\n\r\n<p>1/3 cups broccoli</p>\r\n\r\n<p>Cajon seasoning</p>\r\n\r\n<p>3 cloves garlic, diced</p>\r\n\r\n<p>&frac12; cup diced onion</p>\r\n\r\n<p>&frac14; tsp basil</p>\r\n\r\n<p>&frac12; cups white wine or chicken broth (more)</p>\r\n\r\n<p>&frac12; cup half and half (more)</p>\r\n\r\n<p>3 tbs grated parmesan cheese</p>\r\n\r\n<p>1 polish sausage</p>\r\n\r\n<p>1 tbs cornstarch</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ul>\r\n\t<li style=\"text-align:justify\">Cook noodles</li>\r\n\t<li style=\"text-align:justify\">Boill sausage and broccoli then drain</li>\r\n\t<li style=\"text-align:justify\">Cut chicken into cubes, season with salt, pepper and cajon. Cook in oil.</li>\r\n\t<li style=\"text-align:justify\">In separate skillet (larger) heat oil. Add onions then garlic. Cook till translucent then add half and half and chicken broth.&nbsp; I add cornstarch because I like thicker sauces. Stir to desired consistency.</li>\r\n\t<li style=\"text-align:justify\">Add in chicken, broccoli and sausage. Stir and cook till warm.</li>\r\n\t<li style=\"text-align:justify\">Serve over pasta</li>\r\n</ul>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 29,
+  "fields": {
+    "title": "Ninja Frisbee Cake",
+    "meal_type": "dessert",
+    "instructions": "<ul>\r\n\t<li>Chocolate cake in a ninja frisby pan</li>\r\n\t<li>Coco powder (prefer dark chocolate) &frac14; cup + 2 tablespoons</li>\r\n\t<li>Vegetable oil</li>\r\n\t<li>Vanilla extract</li>\r\n\t<li>Powdered sugar 1 1/3 cup divided</li>\r\n\t<li>Milk 1 tablespoon</li>\r\n\t<li>Heavy whipping cream</li>\r\n\t<li>Granulated sugar</li>\r\n\t<li>Cream chesse 8 oz</li>\r\n</ul>\r\n\r\n<p style=\"margin-left:48px\">&nbsp;</p>\r\n\r\n<p style=\"margin-left:48px\">&nbsp;</p>\r\n\r\n<ol>\r\n\t<li>2 tablespoons coco powder and 2 tablespoons vegetable oil. Stir Add &frac14; teaspoon vanilla extract and 1/3 cup powdered sugar and 1 tablespoon milk. Stir. Smooth out on base of cake.</li>\r\n\t<li>1 cup heavy whipping cream and 1/4 cup granulated sugar. Whip till cool whip is formed. Set aside</li>\r\n\t<li>&frac14; cup coco powder and 1/8 cup vegetable oil. Mix. Add cream cheese. Mix. Add 1 cup of powdered sugar. Mix till creamy. Add in whipped cream from step 2. Put on cake.</li>\r\n\t<li>If taking to a party or something grate a chocolate bar on top for aesthetics.</li>\r\n</ol>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 30,
+  "fields": {
+    "title": "Pancakes",
+    "meal_type": "breakfast",
+    "instructions": "<p>1 &frac14; cups flour</p>\r\n\r\n<p>1 tablespoon baking powder</p>\r\n\r\n<p>11/4 teaspoon white sugar</p>\r\n\r\n<p>&frac12; tsp salt</p>\r\n\r\n<p>1 egg</p>\r\n\r\n<p>1 tbs oil</p>\r\n\r\n<p>1 cup buttermilk</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 31,
+  "fields": {
+    "title": "Peach Cobbler",
+    "meal_type": "dessert",
+    "instructions": "<p>&bull; &nbsp;8 fresh peaches - peeled, pitted and sliced into thin wedges<br />\r\n&bull; &nbsp;&frac14; cup white sugar<br />\r\n&bull; &nbsp;&frac14; cup brown sugar<br />\r\n&bull; &nbsp;&frac14; teaspoon ground cinnamon<br />\r\n&bull; &nbsp;⅛ teaspoon ground nutmeg<br />\r\n&bull; &nbsp;1 teaspoon fresh lemon juice<br />\r\n&bull; &nbsp;2 teaspoons cornstarch<br />\r\n&bull; &nbsp;1 cup all-purpose flour<br />\r\n&bull; &nbsp;&frac14; cup white sugar<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac14; cup brown sugar<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 teaspoon baking powder<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac12; teaspoon salt<br />\r\n&bull;&nbsp;&nbsp; &nbsp;6 tablespoons unsalted butter, chilled and cut into small pieces<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac14; cup boiling water<br />\r\nMIX TOGETHER:<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3 tablespoons white sugar and 1 teaspoon ground cinnamon<br />\r\nPreheat oven to 425<br />\r\nIn a large bowl, combine peaches, 1/4 cup white sugar, 1/4 cup brown sugar, 1/4 teaspoon cinnamon, nutmeg, lemon juice, and cornstarch. Toss to coat evenly, and pour into a cast iron pan . Bake in preheated oven for 10 minutes.</p>\r\n\r\n<p>Meanwhile, in a large bowl, combine flour, 1/4 cup white sugar, 1/4 cup brown sugar, baking powder, and salt. Blend in butter with your fingertips, or a pastry blender, until mixture resembles coarse meal. Stir in water until just combined.</p>\r\n\r\n<p>Remove peaches from oven, and drop spoonfuls of topping over them. Sprinkle with cinnamon/sugar mixture. Bake until topping is golden, a bout 30 minutes<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 32,
+  "fields": {
+    "title": "Pizza Sause",
+    "meal_type": "dinner",
+    "instructions": "<p>&bull;&nbsp;&nbsp; &nbsp;Oregano<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Parsley<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Basil<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Pepper (black and flaked)<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Parmesan cheese<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 can tomato sauce</p>\r\n\r\n<p>1.&nbsp;&nbsp; &nbsp;Spread some parmesan cheese on dough and cover with 3/4ish can of tomato sauce. Enough to cover but not thick.<br />\r\n2.&nbsp;&nbsp; &nbsp;Spread spices on top of sauce.<br />\r\n3.&nbsp;&nbsp; &nbsp;Add toppings.<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 33,
+  "fields": {
+    "title": "Peaches and Cream",
+    "meal_type": "dessert",
+    "instructions": "<p>Crust:<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3 cups (280 g) graham cracker crumbs<br />\r\n&bull;&nbsp;&nbsp; &nbsp;2-3 tablespoons granulated sugar<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac34; cup (170 g) butter, melte<br />\r\nCreamy Filling:<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 &frac12; cups (171 g) powdered sugar<br />\r\n&bull;&nbsp;&nbsp; &nbsp;8 ounces (227 g) cream cheese, softened to room temperature<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac12; teaspoon vanilla extract<br />\r\n&bull;&nbsp;&nbsp; &nbsp;2 cups cold heavy whipping cream (see note)<br />\r\n&bull;&nbsp;&nbsp; &nbsp;5-6 medium fresh peaches</p>\r\n\r\n<p>&bull;&nbsp;&nbsp; &nbsp;In a medium bowl, stir together the graham cracker crumbs and granulated sugar. Stir in the melted butter until the crumbs are evenly moistened. Remove 1/3 cup of the crumbs and set aside for later.&nbsp;<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Press the remaining crumb mixture on the bottom of a 9X13-inch pan. Refrigerate the crust while preparing the rest of the dessert.<br />\r\n&bull;&nbsp;&nbsp; &nbsp;In a large bowl using an electric handheld mixer or in the bowl of an electric stand mixer, mix the powdered sugar and cream cheese together until light and smooth, 1-2 minutes. Mix in the vanilla.&nbsp;<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Pour in the cold heavy cream and mix on low (to avoid spatters) until the mixture starts to come together. Increase the speed to medium-high and mix until the mixture is thick and fluffy.<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Spread a little less than half of the cream filling over the chilled crust. Layer the sliced peaches over the top of the cream.&nbsp;<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Dollop the remaining cream over the top of the peaches in large spoonfuls and spread carefully to the edges of the pan cover the peaches completely. Sprinkle the reserved graham cracker mixture over the top. Cover with plastic wrap and chill for at least 2 hours or up to 12 hours before serving.&nbsp;<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 34,
+  "fields": {
+    "title": "Raspberry Cheesecake Trifle",
+    "meal_type": "dessert",
+    "instructions": "<p>16 oz cream cheese softened<br />\r\n2 cups powdered sugar<br />\r\n1 cup sour cream<br />\r\n2 tsp vanilla extract<br />\r\n&frac14; tsp almond extract</p>\r\n\r\n<p>1 c heavy cream<br />\r\n1 tsp vanilla extract<br />\r\n1 tbs sugar</p>\r\n\r\n<p>2 qt raspberries, reserve some for garnish on top<br />\r\n3 tbs sugar<br />\r\nAngel food cake cut into 1 &frac12; cubes</p>\r\n\r\n<p>In a large mixing bowl blend cream cheese and powdered sugar together. Add the sour cream, vanilla and almond extracts.&nbsp;</p>\r\n\r\n<p>In a small bowl whip the heavy cream with 1 tsp vanilla and 1 tbs sugar until stiff. Fold whipped cram into cream cheese mixture. Add cake cubes and cover.</p>\r\n\r\n<p>In a separate bowl drain raspberries and 3 tbs sugar mixing well. &nbsp;</p>\r\n\r\n<p>In a trifle bowl layer 1/3 of berries followed by 1/2 layer of cake/cream mixture. &nbsp;Continue till top and end with berries. Aim for 5 layers total. Garnish with berries.<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 35,
+  "fields": {
+    "title": "Salmon and Spinach",
+    "meal_type": "dinner",
+    "instructions": "<p>&bull;&nbsp;&nbsp; &nbsp;Fresh Salmon<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Can of diced mushrooms<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Bag of fresh spinach<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3 cloves garlic<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3 tomatoes chopped<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Balsamic vinegar<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Salt and pepper<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Olive oil<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Angel hair pasta</p>\r\n\r\n<p><br />\r\n1.&nbsp;&nbsp; &nbsp;Start water for pasta to boil then cook when ready<br />\r\n2.&nbsp;&nbsp; &nbsp;Olive oil in pan and fry salmon. Salt and pepper both sides<br />\r\n3.&nbsp;&nbsp; &nbsp;Olive oil in pan. Saut&eacute; garlic, then add mushrooms and cook till soft. Add salt and pepper. Add tomatoes and cook 1 minute wit. Add spinach, more salt and pepper, cover and stir until wilted.&nbsp;<br />\r\n4.&nbsp;&nbsp; &nbsp;Add balsamic vinegar while plating<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 36,
+  "fields": {
+    "title": "Fusilli with Sausage, Artichokes and Sun-dried Tomatoes",
+    "meal_type": "dinner",
+    "instructions": "<p><br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 small jar of sun-dried tomatoes in oil<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 lb Italian hot sausage, casings removed<br />\r\n&bull;&nbsp;&nbsp; &nbsp;2 (8 oz) packages artichoke hearts<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3 cloves garlic, chopped<br />\r\n&bull;&nbsp;&nbsp; &nbsp;2 cups chicken broth<br />\r\n&bull;&nbsp;&nbsp; &nbsp;16 oz fusilli pasta (I use penne)<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac12; cup shredded parmesan cheese<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1/3 cup chopped basil leaves<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac14; cups chopped parsley leaves<br />\r\n&bull;&nbsp;&nbsp; &nbsp;8 oz water packed fresh mozzarella drained and cubed<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Salt and pepper (I add cornstarch to thicken)</p>\r\n\r\n<p>1.&nbsp;&nbsp; &nbsp;Cook pasta, drain, do not rinse<br />\r\n2.&nbsp;&nbsp; &nbsp;Heal oil from sun-dried tomatoes in large frying pan. Add sausages and cook until brown. Breaking up as you cook. Transfer to a bowl<br />\r\n3.&nbsp;&nbsp; &nbsp;Heat a little more oil and add the garlic and artichokes. Cook until tender (2 minutes)<br />\r\n4.&nbsp;&nbsp; &nbsp;Add the broth and sun-dried tomatoes. Bring to a boil until sauce reduces slightly.<br />\r\n5.&nbsp;&nbsp; &nbsp;Add back in the sausage, parmesan cheese, basil, and parsley to mixture. Bring to a boil and add mozzarella cheese. Season to taste with salt and pepper<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 37,
+  "fields": {
+    "title": "Spinach Artichoke spaghetti Squash Alfredo",
+    "meal_type": "dinner",
+    "instructions": "<p>Ingredients<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 spaghetti squash seeded<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3 teaspoons extra virgin olive oil<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3/4 cup chopped onion<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3 cloves garlic minced<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1/2 cup light sour cream<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3 ounces less fat cream cheese<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3/4 cup grated parmesan divided<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3 cups packed baby spinach<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 1/4 cups canned artichoke hearts chopped<br />\r\n&bull;&nbsp;&nbsp; &nbsp;salt and pepper<br />\r\n&bull;&nbsp;&nbsp; &nbsp;3/4 cup shredded mozzarella cheese<br />\r\n&bull;&nbsp;&nbsp; &nbsp;chopped fresh parsley<br />\r\nInstructions<br />\r\nPlace the spaghetti squash in a microwave safe dish, cut side down. &nbsp;Pour about half an inch of water in the dish, then cover with plastic wrap and microwave until soft, about 10 minutes. &nbsp;Remove and let cool slightly, then with a fork, scrape up the strings from the squash.<br />\r\nMeanwhile, in a pan, heat the olive oil over medium heat. &nbsp;Add the onion and cook until tender, 5-8 minutes. &nbsp;Add the garlic and cook until fragrant, about 60 seconds. Add in the sour cream, cream cheese and half of the parmesan cheese and stir until the cream cheese has melted and the mixture is smooth. &nbsp;Stir in the spinach and artichoke hearts and cook until the spinach has wilted. &nbsp;Season to taste with salt and pepper. Pour half of the mixture into each spaghetti squash half and gently pull up on the spaghetti squash strings to combine with the sauce as much as possible. &nbsp;Top with the shredded mozzarella and the remaining parmesan. &nbsp;Place under the broiler for 2-3 minutes, or until the cheese is melted and bubbly.&nbsp;<br />\r\nSprinkle with fresh parsley, if desired, and serve hot.<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 38,
+  "fields": {
+    "title": "Pizza Dough",
+    "meal_type": "dinner",
+    "instructions": "<ul>\r\n\t<li>2+ cups flour</li>\r\n\t<li>2 tablespoons yeast</li>\r\n\t<li>1 &frac12; tsp sugar</li>\r\n\t<li>&frac34; tsp salt</li>\r\n\t<li>&frac14; tsp garlic powder and or dried basil (optional)</li>\r\n\t<li>2 tbs olive oil</li>\r\n\t<li>&frac34; cups warm water (not hot)</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Combine1 cup flour and other dry ingredients in mixing bowl. Add warm water and olive oil and mix using bread hook.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Gradually add another cup of flower and as much as needed so the dough barley sticks to bottom of bowl.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Cover and set to rise for 30 minutes.</p>\r\n\r\n<p>Preheat oven to 425</p>\r\n\r\n<p>Bake 13-15 minutes</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 39,
+  "fields": {
+    "title": "Taco Seasoning",
+    "meal_type": "dinner",
+    "instructions": "<p><br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 tbs chile powder<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac14; tsp garlic powder<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac14; tsp onion powder<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac14; tsp red pepper flakes<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac14; tsp dried oregano<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac12; tsp paprika<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 &frac12; tsp ground cumin<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 tsp salt<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 tsp black pepper<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 40,
+  "fields": {
+    "title": "Chocolate Banana Bread",
+    "meal_type": "dessert",
+    "instructions": "<p>&bull; &nbsp;3 very ripe bananas<br />\r\n&bull; &nbsp;2/3 cup granulated sugar<br />\r\n&bull; &nbsp;1/2 cup unsalted butter, softened<br />\r\n&bull; &nbsp;2 large eggs, lightly beaten, at room temperature<br />\r\n&bull; &nbsp;1/2 tsp vanilla extract<br />\r\n&bull; &nbsp;1 cup all-purpose flour, or gluten-free flour<br />\r\n&bull; &nbsp;1/3 cup natural unsweetened cocoa powder,&nbsp;<br />\r\n&bull; &nbsp;1 tsp baking soda<br />\r\n&bull; &nbsp;1/2 tsp salt<br />\r\n&bull; &nbsp;1 cup semisweet chocolate chips, divided into 3/4 cup and 1/4 cup<br />\r\nWalnuts<br />\r\nPreheat oven to350. Cream together the butter and sugar. Add the lightly beaten eggs and mix just to combine. Mix in the bananas and vanilla until blended. Mix the flour, cocoa powder, baking soda, and salt. Add the dry ingredients to the wet and mix on medium-low speed until just incorporated. Do not over mix. Add chocolate chips and walnuts. Bake 1 hour.<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 41,
+  "fields": {
+    "title": "Chicken Teriyaki (Quick)",
+    "meal_type": "dinner",
+    "instructions": "<p>Cjicken thighs or breast<br />\r\n1 tbs oil (sesame oil or olive oil)<br />\r\nSalt<br />\r\npepper</p>\r\n\r\n<p><br />\r\nSauce<br />\r\n&frac12; cup low sodium soy sause<br />\r\n&frac34; cup water<br />\r\n3 garlic cloves minced<br />\r\n1 tsp ginger<br />\r\n2 tbs cornstarch&nbsp;<br />\r\n&frac14; tsp red pepper flakes or to taste<br />\r\n&frac12; cup brown sugar<br />\r\nCarrots/peas/green onion</p>\r\n\r\n<p>&bull;&nbsp;&nbsp; &nbsp;Prepare the sauce and set aside<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Cut the chicken into cubes and cook in oil salt and pepper to taste<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Once chicken is cooked pour in the sauce, toss and cook till warm<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Serve over rice<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 42,
+  "fields": {
+    "title": "Buttermilk Blueberry Cake",
+    "meal_type": "dessert",
+    "instructions": "<p>&bull;&nbsp;&nbsp; &nbsp;&frac12; cup unsalted butter at room temperature<br />\r\n&bull;&nbsp;&nbsp; &nbsp;Zest from 1 large lemon<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 egg room temperature<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 cup sugar (set aside 1 tbs for sprinkling)<br />\r\n&bull;&nbsp;&nbsp; &nbsp;2 cups flour<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 tsp vanilla<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 tsp baking powder<br />\r\n&bull;&nbsp;&nbsp; &nbsp;1 tsp salt<br />\r\n&bull;&nbsp;&nbsp; &nbsp;2 cups fresh blueberries<br />\r\n&bull;&nbsp;&nbsp; &nbsp;&frac12; cup buttermilk</p>\r\n\r\n<p>1. Preheat oven to 350. Using mixer cream the butter with the lemon zest &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;and 1 cup sugar until light and fluffy.<br />\r\n2. Add the egg and vanilla and beat until combined.<br />\r\n3. Toss blueberries with &frac14; cup flour then wisk the remaining flour, baking powder and salt together.<br />\r\n4.Add &frac12; the flour mixture to the batter and mix. Then add the buttermilk. Stir then add the other half of the flour mixture and stir until absorbed.<br />\r\n5. Fold in the blueberries (leaving excess flour behing)<br />\r\n6. Grease and 8 or 9 inch square baking pan. Add batter and sprinkle top with 1 tbs sugar</p>\r\n\r\n<p>Bake 35-45 minutes. Check with toothpick. Let cool 15 minutes<br />\r\n&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 44,
+  "fields": {
+    "title": "Stuffed Eggplant Parm",
+    "meal_type": "dinner",
+    "instructions": "<p><strong>Ingredients</strong></p>\r\n\r\n<ul>\r\n\t<li>1 1/2 cups marinara, divided</li>\r\n\t<li>2 medium eggplants, halved</li>\r\n\t<li>1 Tbsp. extra-virgin olive oil</li>\r\n\t<li>1 medium onion, chopped</li>\r\n\t<li>1 tsp. dried oregano</li>\r\n\t<li>Kosher salt</li>\r\n\t<li>Freshly ground black pepper</li>\r\n\t<li>2 cloves garlic, minced</li>\r\n\t<li>1 cup chopped tomatoes</li>\r\n\t<li>1 large egg, lightly beaten</li>\r\n\t<li>2 1/2 cups shredded mozzarella, divided</li>\r\n\t<li>1/4 cup freshly grated Parmesan</li>\r\n\t<li>1/4 cup Italian bread crumbs</li>\r\n\t<li>Freshly sliced basil, for garnish<br />\r\n\t&nbsp;</li>\r\n</ul>\r\n\r\n<p>Directions</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Step 1</p>\r\n\r\n<p>Preheat oven to 350&Acirc;&deg;. Spread 1 cup of marinara over the bottom of a 9x13-inch baking dish. Using a spoon, hollow out eggplants, leaving about a 1/2-inch-thick border around skin to create a boat; transfer to baking dish. Roughly chop scooped-out eggplant flesh.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Step 2</p>\r\n\r\n<p>In a large skillet over medium heat, heat oil. Add onion and cook until soft, 5 minutes. Stir in chopped eggplant and season with oregano, salt, and pepper. Cook, stirring often, until golden and tender, 3 to 4 minutes. Add garlic and cook until fragrant, 1 minute.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Step 3</p>\r\n\r\n<p>Transfer mixture to a bowl and add tomatoes, egg, 1 cups of mozzarella, and remaining 1/2 cup marinara. Mix until just combined, then scoop into eggplant boats. Top with remaining 1 cup mozzarella, Parmesan, and bread crumbs.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Step 4</p>\r\n\r\n<p>Bake until eggplants are tender and cheese is golden, about 50 minutes.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Step 5</p>\r\n\r\n<p>Garnish with basil before serving.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 45,
+  "fields": {
+    "title": "Chocolate Angel Pie",
+    "meal_type": "dessert",
+    "instructions": "<p><strong>Chocolate Angel Pie</strong></p>\r\n\r\n<p><em>filling:</em></p>\r\n\r\n<p>9 ounces milk chocolate, chopped fine</p>\r\n\r\n<p>5 ounces bittersweet chocolate, chopped fine</p>\r\n\r\n<p>3 large egg yolks</p>\r\n\r\n<p>1 1/2 tablespoons granulated sugar</p>\r\n\r\n<p>1/2 teaspoon salt</p>\r\n\r\n<p>1/2 cup half-and-half</p>\r\n\r\n<p>1 1/4 cups heavy cream, chilled</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><em>meringue crust:</em></p>\r\n\r\n<p>1 tablespoon cornstarch, plus extra for pie plate</p>\r\n\r\n<p>1/2 cup granulated sugar</p>\r\n\r\n<p>3 large egg whites</p>\r\n\r\n<p>pinch cream of tartar</p>\r\n\r\n<p>1/2 teaspoon vanilla extract</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>topping:</p>\r\n\r\n<p>1 1/3 cups heavy cream, chilled</p>\r\n\r\n<p>2 tablespoons confectioner&#39;s sugar</p>\r\n\r\n<p>unsweetened cocoa powder</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<ol>\r\n\t<li><strong>FOR THE FILLING:</strong> Microwave milk chocolate and bittersweet chocolate in large bowl at 50 percent power, stirring occasionally, until melted, 2 to 4 minutes. Whisk egg yolks, sugar, and salt together in medium bowl until combined, about 1 minute. Bring half-and-half to simmer in small saucepan over medium heat. Whisking constantly, slowly add hot half-and-half to egg yolk mixture in 2 additions until incorporated. Return half-and-half mixture to now-empty saucepan and cook over low heat, whisking constantly, until thickened slightly, 30 seconds to 1 minute. Stir half-and-half mixture into melted chocolate until combined. Let cool slightly, about 8 minutes.</li>\r\n\t<li>Using stand mixer fitted with whisk, whip cream on medium-low speed until foamy, about 1 minute. Increase speed to high and whip until soft peaks form, 1 to 3 minutes. Gently whisk one-third of whipped cream into cooled chocolate mixture. Fold in remaining whipped cream until no white streaks remain. Cover and refrigerate for at least 3 hours, or until ready to assemble pie. (Filling can be made up to 24 hours in advance.)</li>\r\n\t<li><strong>FOR THE MERINGUE CRUST:</strong> Adjust oven rack to lower-middle position and heat oven to 275 degrees. Grease 9-inch pie plate and dust well with extra cornstarch, using pastry brush to distribute evenly. Combine sugar and 1 tablespoon cornstarch in bowl. Using stand mixer fitted with whisk, whip egg whites and cream of tartar on medium-low speed until foamy, about 1 minute. Increase speed to medium-high and whip whites to soft, billowy mounds, 1 to 3 minutes. Gradually add sugar mixture and whip until glossy, stiff peaks form, 3 to 5 minutes. Add vanilla to meringue and whip until incorporated.</li>\r\n\t<li>Spread meringue into prepared pie plate, following contours of plate to cover bottom, sides, and edges. Bake for 1&Acirc;&frac12; hours. Rotate pie plate, reduce oven temperature to 200 degrees, and bake until completely dried out, about 1 hour longer. (Shell will rise above rim of pie plate; some cracking is OK.) Let cool completely, about 30 minutes.</li>\r\n\t<li><strong>FOR THE TOPPING:</strong> Spoon cooled chocolate filling into cavity of pie shell, distributing evenly. Using stand mixer fitted with whisk, whip cream and sugar on medium-low speed until foamy, about 1 minute. Increase speed to high and whip until stiff peaks form, 1 to 3 minutes. Spread whipped cream evenly over chocolate. Refrigerate until filling is set, about 1 hour. Dust with cocoa. Slice with sharp knife and serve.</li>\r\n</ol>\r\n\r\n<p><strong>Don&#39;t make this mistake: Busted Crust</strong></p>\r\n\r\n<p>The egg white crust is part of what distinguishes angel pie. To avoid a sticky, broken meringue shell, we added cornstarch to the whites, and we greased the pie plate and dusted it with more cornstarch. We also figured out the ideal baking time and temperatures to ensure that the interior and exterior of the meringue cooked properly.&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 46,
+  "fields": {
+    "title": "Chicken Stir Fry",
+    "meal_type": "dinner",
+    "instructions": "<p><strong>Chicken Stir Fry</strong></p>\r\n\r\n<ul>\r\n\t<li>1 lb chicken thighs, *cut into bite-sized pieces</li>\r\n\t<li>&frac12;&nbsp;zucchini, sliced or cubed</li>\r\n\t<li>2 Tbsp oil, divided</li>\r\n\t<li>1 Tbsp unsalted butter</li>\r\n\t<li>1 cup broccoli, cut into florets</li>\r\n\t<li>1 small carrot, julienned or cubed</li>\r\n\t<li>8 oz mushrooms, sliced</li>\r\n\t<li>&frac12;&nbsp;red pepper, cubed</li>\r\n\t<li>4 garlic cloves, minced</li>\r\n\t<li>1 tsp fresh ginger, minced</li>\r\n\t<li>1/2 onion, cubed</li>\r\n\t<li>&frac12; cup cashews</li>\r\n</ul>\r\n\r\n<p><br />\r\n<strong>Best Stir Fry Sauce Ingredients:</strong></p>\r\n\r\n<p>1/2 cup chicken broth<br />\r\n1/4 cup water<br />\r\n1/4 cup soy sauce, or gluten-free soy sauce<br />\r\n2 Tbsp honey<br />\r\n1 Tbsp corn starch</p>\r\n\r\n<p><br />\r\n<strong>Instructions</strong></p>\r\n\r\n<ol>\r\n\t<li>Trim chicken thighs of excess fat and cut them into bite-sized pieces. Cut the vegetables into even-sized pieces (about the same size as the chicken pieces).</li>\r\n\t<li>Combine all of the ingredients for the sauce in a bowl. Set aside.</li>\r\n\t<li>In a large pan (or wok), on med/high heat, heat 1 Tbsp oil. Once the oil is hot, add chicken in a single layer. Cook chicken until browned, mixing as needed. Once cooked, remove the chicken from the pan and set aside.</li>\r\n\t<li>Add the remaining oil and the butter to the skillet with the broccoli, zucchini, mushrooms, red peppers, onion, and carrots. Cook until vegetables are crisp-tender, mixing frequently.</li>\r\n\t<li>Add chicken back to the pan. Add the garlic and ginger and cook for 1 minute, stirring frequently.</li>\r\n\t<li>Add the cashews then pour the sauce into the pan and bring to a boil. Turn down the heat and let stir fry simmer until the sauce thickens and is well incorporated with the remaining ingredients. Garnish with green onion and sesame seed before serving if desired.</li>\r\n</ol>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 47,
+  "fields": {
+    "title": "Cajun Chicken Ragout",
+    "meal_type": "dinner",
+    "instructions": "<p><strong>ingredients</strong></p>\r\n\r\n<p>yields 4 servings</p>\r\n\r\n<ul>\r\n\t<li>6 slices bacon, cut into 1/4-inch pieces</li>\r\n\t<li>1 large onion, diced</li>\r\n\t<li>2 ribs celery, diced</li>\r\n\t<li>1 pinch salt</li>\r\n\t<li>1 green bell pepper, diced</li>\r\n\t<li>1 red bell pepper, diced</li>\r\n\t<li>3 cloves garlic, minced</li>\r\n\t<li>1 tablespoon vegetable oil</li>\r\n\t<li>&acirc; cup all-purpose flour</li>\r\n\t<li>1 teaspoon freshly ground black pepper</li>\r\n\t<li>1 teaspoon paprika</li>\r\n\t<li>&frac12; teaspoon dried oregano</li>\r\n\t<li>&frac14; teaspoon cayenne pepper, or to taste</li>\r\n\t<li>3 cups cold chicken broth, divided</li>\r\n\t<li>1 teaspoon Worcestershire sauce</li>\r\n\t<li>2 cups shredded cooked chicken breast</li>\r\n\t<li>8 ounces andouille sausage, sliced</li>\r\n\t<li>&frac14; cup finely chopped green onions (white and light green parts)</li>\r\n\t<li>2 tablespoons finely chopped green onions (white and light green parts)</li>\r\n\t<li>salt and freshly ground black pepper to taste</li>\r\n</ul>\r\n\r\n<p><br />\r\n<strong>Directions</strong></p>\r\n\r\n<ol>\r\n\t<li>Cook and stir bacon in a large skillet over medium heat until crisp, about 10 minutes. Transfer bacon to a bowl using a slotted spoon, reserving 2 tablespoons bacon fat in the skillet.</li>\r\n\t<li>Return the skillet to medium heat; cook and stir onion, celery, and a pinch of salt in bacon fat until onion begins to soften, about 5 minutes. Add green bell pepper, red bell pepper, and garlic; cook, stirring frequently, until bell peppers are soft, about 5 minutes.</li>\r\n\t<li>Pour vegetable oil into onion mixture, sprinkle in flour, and cook until flour is browned and mixture thickens, about 5 minutes. Add 1 teaspoon black pepper, paprika, oregano, and cayenne pepper; stir to combine.</li>\r\n\t<li>Pour 1/4 cup chicken broth into vegetable mixture; cook and stir, scraping any browned bits off the bottom of the pan, until combined. Pour in remaining 2 3/4 cups broth and Worcestershire sauce. Increase heat to medium-high and simmer until sauce is thick and reduced slightly, about 10 minutes.</li>\r\n\t<li>Reduce heat to low. Add chicken, andouille sausage, and bacon. Cook until heated through. Remove from heat, stir in 1/4 cup plus 2 tablespoons green onions, and season with salt and black pepper.</li>\r\n</ol>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 48,
+  "fields": {
+    "title": "Creamy Cajon Chicken Pasta",
+    "meal_type": "dinner",
+    "instructions": "<p>Ingredients:</p>\r\n\r\n<ul>\r\n\t<li>2 boneless,skinless chicken breasts cut into strips</li>\r\n\t<li>4 oz linguine cooked al dente</li>\r\n\t<li>2tsp cajon seasoning</li>\r\n\t<li>2 tbs butter</li>\r\n\t<li>1 green onion sliced thinly</li>\r\n\t<li>2 cups heavy whipping cream</li>\r\n\t<li>2 tbs chopped sun dried tomatoes</li>\r\n\t<li>&frac14; tsp salt</li>\r\n\t<li>&frac14; tsp dried basil</li>\r\n\t<li>1/8 tsp black pepper</li>\r\n\t<li>1/8 tsp garlic powder</li>\r\n\t<li>&frac14; cup grated parmesan cheese</li>\r\n</ul>\r\n\r\n<p>Directions:</p>\r\n\r\n<ol>\r\n\t<li>Saute chicken in butter with cajon</li>\r\n\t<li>Reduce heat and add everything else except parmesan</li>\r\n\t<li>Pour over hot linguine and toss with parmesan cheese.<br />\r\n\t&nbsp;</li>\r\n</ol>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 49,
+  "fields": {
+    "title": "Fajita Seasoning",
+    "meal_type": "dinner",
+    "instructions": "<ul>\r\n\t<li>1 tablespoon cornstarch</li>\r\n\t<li>2 teaspoons chili powder</li>\r\n\t<li>1 teaspoon salt</li>\r\n\t<li>1 teaspoon ground paprika</li>\r\n\t<li>T teaspoon while sugar</li>\r\n\t<li>&frac12; teaspoon onion powder</li>\r\n\t<li>&frac12; teaspoon garlic powder</li>\r\n\t<li>&frac12; &nbsp;teaspoon ground cumin</li>\r\n\t<li>&frac14; teaspoon cayenne pepper<br />\r\n\t&nbsp;</li>\r\n</ul>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 50,
+  "fields": {
+    "title": "Banana Bread",
+    "meal_type": "dessert",
+    "instructions": "<p>&middot; &nbsp;1 cup white sugar</p>\r\n\r\n<p>&middot; &nbsp;&Acirc;&frac12; cup butter, melted</p>\r\n\r\n<p>&middot; &nbsp; &nbsp;2 eggs</p>\r\n\r\n<p>&middot; &nbsp;1 teaspoon vanilla extract</p>\r\n\r\n<p>&middot; &nbsp;1 &Acirc;&frac12; cups all-purpose flour</p>\r\n\r\n<p>&middot; &nbsp;1 teaspoon baking soda</p>\r\n\r\n<p>&middot; &nbsp;&Acirc;&frac12; teaspoon salt</p>\r\n\r\n<p>&middot; &nbsp;&Acirc;&frac12; cup sour cream</p>\r\n\r\n<p>&middot; &nbsp;&Acirc;&frac12; cup chopped walnuts</p>\r\n\r\n<p>&middot; &nbsp;2 medium bananas, sliced</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Preheat oven to350 degrees. Stir sugar and melted butter together in a large bowl. Add eggs and vanilla; mix well. Combine flour, baking soda, and salt; stir into butter mixture until smooth. Bake 1 hour</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 51,
+  "fields": {
+    "title": "Peanut Brittle",
+    "meal_type": "dessert",
+    "instructions": "<ul>\r\n\t<li>cup white Karo syrup</li>\r\n\t<li>&frac12; cup RAW peanuts</li>\r\n\t<li>cup sugar</li>\r\n\t<li>teaspoon baking soda<br />\r\n\t&nbsp;</li>\r\n</ul>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Combine all ingredients except baking soda. Cook till boiling. Reduce heat to medium for 10-12 minutes or until peanuts start to turn deep yellow. This is your gauge, watch the peanuts closely. Remove from heat.</p>\r\n\r\n<p>Add t teaspoon baking soda and whip until it stops swelling. About 15 seconds. Pour onto a pan lines with aluminum foil. After cool break and the back of a spoon into pieces. Store in air tight container.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>WHEN RECEIVING THIS RECIPE, SHARON WS TOLD IT IS TO STAY WITHIN OUR FAMILY. IT CAME FROM HER FRIEND IN GEORGIA. PLEASE HONOR THIS REQUEST!</p>\r\n\r\n<p>&nbsp;</p>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "recipes.recipe",
+  "pk": 52,
+  "fields": {
+    "title": "Blueberry Cream Pie",
+    "meal_type": "dessert",
+    "instructions": "<p><strong>Ingredients</strong></p>\r\n\r\n<ul>\r\n\t<li>Crust</li>\r\n\t<li>12 whole graham crackers (6.5 oz) broken into pieces</li>\r\n\t<li>2 tablespoons sugar</li>\r\n\t<li>Pinch table salt</li>\r\n\t<li>6 tablespoons unsalted butter, melted</li>\r\n\t<li>Filling</li>\r\n\t<li>1/2 cup (3.5 oz.) sugar</li>\r\n\t<li>4 teaspoons cornstarch</li>\r\n\t<li>1/4 teaspoon table salt</li>\r\n\t<li>1-1/2 lbs. (about 4-3/4 cups) fresh blueberries</li>\r\n\t<li>1 tablespoon lemon juice</li>\r\n\t<li>Topping</li>\r\n\t<li>8 oz. cream cheese, softened</li>\r\n\t<li>1/4 cup (sugar)</li>\r\n\t<li>1 teaspoon vanilla extract</li>\r\n\t<li>1 cup heavy cream, chilled</li>\r\n</ul>\r\n\r\n<p><br />\r\n<strong>Instructions</strong></p>\r\n\r\n<p><strong>For the crust:</strong></p>\r\n\r\n<ol>\r\n\t<li>Adjust oven rack to middle position and heat oven to 325 degrees. Process cracker pieces in food processor until finely ground, about 30 seconds. Add sugar and salt and pulse to combined, about 3 pulses. Add melted butter and pulse until combined, about 8 pulses. Transfer crumbs to 9&quot; pie plate. Using bottom of dray measuring cup, press crumbs into bottom and up sides of plate. Bake until crust is fragrant and beginning to brown, 16-18 minutes. Transfer plate to wire rack.</li>\r\n</ol>\r\n\r\n<p><br />\r\n<strong>For the filling:</strong></p>\r\n\r\n<ol>\r\n\t<li>Meanwhile, whisk sugar, cornstarch and salt in medium saucepan until no lumps of cornstarch remain. Process 2 cups blueberries in clean, dry workbowl until smooth, about 2 minutes, scraping down sides of bowl as needed. Strain puree through fine-mesh strainer into sugar mixture in saucepan, pressing on solids to extract as much liquid as possible (this will take some effort); discard solids. Whisk puree into sugar mixture until combined.</li>\r\n\t<li>Bring puree mixture to simmer over medium heat, whisking frequently. Continue to cook, whisking constantly, until whisk leaves trail that slowly fills in, about 1 minute longer. Off heat, whisk in lemon juice. Reserve 2 tablespoons puree for piping. Stir remaining blueberries into remaining puree in saucepan. Spread filling evenly over bottom of pie crust (crust does not need to be completely cool).</li>\r\n</ol>\r\n\r\n<p><br />\r\n<strong>For the topping:</strong></p>\r\n\r\n<ol>\r\n\t<li>Using stand mixer fitted with whisk attachment, whip cream cheese, sugar and vanilla on medium-high speed until very smooth, about 2 minutes, scraping down bowl as needed. With mixer running, slowly our in cream and whip until stiff peaks form, 1-3 minutes, scraping down bowl as needed.</li>\r\n\t<li>Fit large pastry bag with large closed star tip. Using small spatula (or butter knife), apply 3 vertical stripes of reserved puree up sides of pastry bag. Fill pastry bag with topping. Pipe rosettes (spiraling from inside out) in concentric circles over surface of pie, covering filling. Pipe stars in any gaps between rosettes. Refrigerate pie for at least 4 hours or up to 24 hours. Serve.</li>\r\n</ol>",
+    "ingredients": [],
+    "favorites": []
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 49,
+  "fields": {
+    "action_time": "2025-04-06T03:23:19.441Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "instruction"
+    ],
+    "object_id": "3",
+    "object_repr": "testestestestest",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 50,
+  "fields": {
+    "action_time": "2025-04-06T03:23:19.441Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "instruction"
+    ],
+    "object_id": "2",
+    "object_repr": "test",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 51,
+  "fields": {
+    "action_time": "2025-04-06T03:23:19.441Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "instruction"
+    ],
+    "object_id": "1",
+    "object_repr": "test",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 52,
+  "fields": {
+    "action_time": "2025-04-06T03:46:28.594Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "13",
+    "object_repr": "test",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 53,
+  "fields": {
+    "action_time": "2025-04-06T03:46:28.594Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "12",
+    "object_repr": "test",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 54,
+  "fields": {
+    "action_time": "2025-04-06T03:47:36.331Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "11",
+    "object_repr": "Pat thai",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Meal type\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 55,
+  "fields": {
+    "action_time": "2025-04-06T03:47:39.880Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "10",
+    "object_repr": "Dad's special burgers",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Meal type\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 56,
+  "fields": {
+    "action_time": "2025-04-06T03:47:46.100Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "9",
+    "object_repr": "Sun Dried Tomato",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Meal type\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 57,
+  "fields": {
+    "action_time": "2025-04-06T17:18:05.325Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "11",
+    "object_repr": "Pat thai",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 58,
+  "fields": {
+    "action_time": "2025-04-06T17:18:05.325Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "10",
+    "object_repr": "Dad's special burgers",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 59,
+  "fields": {
+    "action_time": "2025-04-06T17:18:05.325Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "9",
+    "object_repr": "Sun Dried Tomato",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 60,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.912Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "46",
+    "object_repr": "Lime juice",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 61,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.912Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "45",
+    "object_repr": "Basil",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 62,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.912Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "44",
+    "object_repr": "Cilantro",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 63,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "43",
+    "object_repr": "Onions",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 64,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "42",
+    "object_repr": "Green onions",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 65,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "41",
+    "object_repr": "Brown sugar",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 66,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "40",
+    "object_repr": "Fish sauce",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 67,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "39",
+    "object_repr": "Rice noodles",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 68,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "38",
+    "object_repr": "Coconut milk",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 69,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "37",
+    "object_repr": "Chicken broth",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 70,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "36",
+    "object_repr": "Ginger",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 71,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "35",
+    "object_repr": "Red curry paste",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 72,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "34",
+    "object_repr": "Red bell pepper",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 73,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "33",
+    "object_repr": "Garlic",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 74,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "32",
+    "object_repr": "Pepper",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 75,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "31",
+    "object_repr": "Salt",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 76,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "30",
+    "object_repr": "Chicken breast",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 77,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "28",
+    "object_repr": "Olive oil",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 78,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "18",
+    "object_repr": "Lettuce",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 79,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "17",
+    "object_repr": "Ground beef",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 80,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "16",
+    "object_repr": "Shredded cheese",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 81,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "15",
+    "object_repr": "Pickles",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 82,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "14",
+    "object_repr": "Tomato",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 83,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "13",
+    "object_repr": "Burger buns",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 84,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "12",
+    "object_repr": "Artichoke parts",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 85,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "11",
+    "object_repr": "Beef",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 86,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "10",
+    "object_repr": "Sun dried tomato",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 87,
+  "fields": {
+    "action_time": "2025-04-06T17:18:10.913Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "9",
+    "object_repr": "Noodle",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 88,
+  "fields": {
+    "action_time": "2025-04-06T17:27:26.823Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "96",
+    "object_repr": "Hot dogs",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 89,
+  "fields": {
+    "action_time": "2025-04-06T17:28:22.316Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "16",
+    "object_repr": "Krout Dogs",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Ingredients\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 90,
+  "fields": {
+    "action_time": "2025-04-06T17:29:57.741Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "17",
+    "object_repr": "Green Chile Stew",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Ingredients\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 91,
+  "fields": {
+    "action_time": "2025-04-06T17:30:05.636Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "99",
+    "object_repr": "onion",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 92,
+  "fields": {
+    "action_time": "2025-04-06T17:31:20.709Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "18",
+    "object_repr": "Granny Coleslaw",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Ingredients\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 93,
+  "fields": {
+    "action_time": "2025-04-06T17:32:47.709Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "19",
+    "object_repr": "Grandpas’ Recipe",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 94,
+  "fields": {
+    "action_time": "2025-04-06T17:33:00.816Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "19",
+    "object_repr": "Grandpas’ Recipe",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Ingredients\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 95,
+  "fields": {
+    "action_time": "2025-04-06T17:34:14.749Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "19",
+    "object_repr": "Grandpas’ Recipe",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 96,
+  "fields": {
+    "action_time": "2025-04-06T17:34:14.749Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "18",
+    "object_repr": "Granny Coleslaw",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 97,
+  "fields": {
+    "action_time": "2025-04-06T17:34:14.749Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "17",
+    "object_repr": "Green Chile Stew",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 98,
+  "fields": {
+    "action_time": "2025-04-06T17:34:14.749Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "16",
+    "object_repr": "Krout Dogs",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 99,
+  "fields": {
+    "action_time": "2025-04-06T17:34:14.749Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "15",
+    "object_repr": "Creamy Garlic Butter Tuscan Salmon",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 100,
+  "fields": {
+    "action_time": "2025-04-06T17:34:14.749Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "14",
+    "object_repr": "Chocolate Chip Cookies",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 101,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "120",
+    "object_repr": "sausage",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 102,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "119",
+    "object_repr": "parmesan cheese",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 103,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "118",
+    "object_repr": "basil",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 104,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "117",
+    "object_repr": "onion",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 105,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "116",
+    "object_repr": "garlic",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 106,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "115",
+    "object_repr": "Cajon",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 107,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "114",
+    "object_repr": "broccoli",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 108,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "113",
+    "object_repr": "Salt",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 109,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "112",
+    "object_repr": "Penne noodles",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 110,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "111",
+    "object_repr": "Chicken thighs",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 111,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "110",
+    "object_repr": "Olive oil",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 112,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "109",
+    "object_repr": "Olive oil",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 113,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "108",
+    "object_repr": "Red wine",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 114,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "107",
+    "object_repr": "Mayonnaise",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 115,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "106",
+    "object_repr": "Raisins",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 116,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "105",
+    "object_repr": "Carrots",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 117,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "104",
+    "object_repr": "Cabbage",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 118,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "103",
+    "object_repr": "green chile",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 119,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "102",
+    "object_repr": "chicken bouillon",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 120,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "101",
+    "object_repr": "garli",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 121,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "100",
+    "object_repr": "garlic",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 122,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "98",
+    "object_repr": "ground beef",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 123,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "97",
+    "object_repr": "pinto beans",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 124,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "95",
+    "object_repr": "Sauerkraut",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 125,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "94",
+    "object_repr": "Mozzarella",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 126,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "93",
+    "object_repr": "Pepper",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 127,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "92",
+    "object_repr": "Parsley",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 128,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "91",
+    "object_repr": "Onion",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 129,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "90",
+    "object_repr": "Bell pepper",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 130,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "89",
+    "object_repr": "Sour cream",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 131,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "88",
+    "object_repr": "Hot dogs",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 132,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "87",
+    "object_repr": "Cappers",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 133,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "86",
+    "object_repr": "parsley",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 134,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "85",
+    "object_repr": "parmesan cheese",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 135,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "84",
+    "object_repr": "baby spinach",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 136,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "83",
+    "object_repr": "half and half",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 137,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "82",
+    "object_repr": "sundried tomatoes",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 138,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "81",
+    "object_repr": "Cornstarch",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 139,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "80",
+    "object_repr": "chicken broth",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 140,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "79",
+    "object_repr": "white wine",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 141,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "78",
+    "object_repr": "yellow onion",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 142,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "77",
+    "object_repr": "garlic",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 143,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "76",
+    "object_repr": "olive oil",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 144,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "75",
+    "object_repr": "Salt and pepper",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 145,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "74",
+    "object_repr": "Salmon Fillets",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 146,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "73",
+    "object_repr": "Cream cheese",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 147,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "72",
+    "object_repr": "Confectioners' sugar",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 148,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "71",
+    "object_repr": "Raisins",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 149,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "70",
+    "object_repr": "Butter",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 150,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "69",
+    "object_repr": "Ground Cinnamon",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 151,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "68",
+    "object_repr": "Buttermilk",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 152,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "67",
+    "object_repr": "Milk",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 153,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "66",
+    "object_repr": "vegetable oil",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 154,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.434Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "65",
+    "object_repr": "Self rising flower",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 155,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "64",
+    "object_repr": "Chopped pecans",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 156,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "63",
+    "object_repr": "Chocolate chips",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 157,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "62",
+    "object_repr": "Baking soda",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 158,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "61",
+    "object_repr": "Baking powder",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 159,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "60",
+    "object_repr": "Salt",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 160,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "59",
+    "object_repr": "Oatmeal",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 161,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "58",
+    "object_repr": "Flour",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 162,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "57",
+    "object_repr": "Vanilla",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 163,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "56",
+    "object_repr": "Eggs",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 164,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "55",
+    "object_repr": "Brown sugar",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 165,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "54",
+    "object_repr": "sugar",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 166,
+  "fields": {
+    "action_time": "2025-04-06T17:34:25.435Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "53",
+    "object_repr": "Crisco",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 167,
+  "fields": {
+    "action_time": "2025-04-06T17:34:49.068Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "121",
+    "object_repr": "Ingredients",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 168,
+  "fields": {
+    "action_time": "2025-04-06T17:37:29.679Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "24",
+    "object_repr": "Creamy Garlic Butter Tuscan Salmon",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 169,
+  "fields": {
+    "action_time": "2025-04-06T17:38:33.206Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "121",
+    "object_repr": "Ingredients (must select me)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 170,
+  "fields": {
+    "action_time": "2025-04-06T20:48:46.492Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "homepage"
+    ],
+    "object_id": "4",
+    "object_repr": "Family Recipes",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 171,
+  "fields": {
+    "action_time": "2025-04-10T20:45:49.039Z",
+    "user": [
+      "tanslee"
+    ],
+    "content_type": [
+      "recipes",
+      "homepage"
+    ],
+    "object_id": "4",
+    "object_repr": "Westbrook Recipes",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 172,
+  "fields": {
+    "action_time": "2025-04-14T16:26:16.357Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "ingredient"
+    ],
+    "object_id": "121",
+    "object_repr": "Ingredients (must select me)",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 173,
+  "fields": {
+    "action_time": "2025-04-19T00:14:02.728Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "instruction"
+    ],
+    "object_id": "5",
+    "object_repr": "How to add images",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 174,
+  "fields": {
+    "action_time": "2025-04-19T00:14:02.728Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "instruction"
+    ],
+    "object_id": "4",
+    "object_repr": "How to add recipes",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 175,
+  "fields": {
+    "action_time": "2025-11-08T02:44:04.166Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "recipes",
+      "recipe"
+    ],
+    "object_id": "43",
+    "object_repr": "Stuffed Eggplant Parm",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 176,
+  "fields": {
+    "action_time": "2025-11-08T03:19:24.168Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "5",
+    "object_repr": "tyler",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 177,
+  "fields": {
+    "action_time": "2025-11-08T03:20:56.928Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "7",
+    "object_repr": "allison",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 178,
+  "fields": {
+    "action_time": "2025-11-08T03:21:01.411Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "9",
+    "object_repr": "amanda",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 179,
+  "fields": {
+    "action_time": "2025-11-08T03:21:04.880Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "8",
+    "object_repr": "greg",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 180,
+  "fields": {
+    "action_time": "2025-11-08T03:21:10.138Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "11",
+    "object_repr": "john",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 181,
+  "fields": {
+    "action_time": "2025-11-08T03:21:14.642Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "kyle",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 182,
+  "fields": {
+    "action_time": "2025-11-08T03:21:18.685Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "10",
+    "object_repr": "makenzy",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 183,
+  "fields": {
+    "action_time": "2025-11-08T03:21:22.437Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "12",
+    "object_repr": "sharon",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 184,
+  "fields": {
+    "action_time": "2025-11-08T03:21:25.537Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "steve",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 185,
+  "fields": {
+    "action_time": "2025-11-08T03:21:29.151Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "tanslee",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Superuser status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 186,
+  "fields": {
+    "action_time": "2025-11-08T03:30:14.001Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Family (default)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 187,
+  "fields": {
+    "action_time": "2025-11-08T03:30:37.304Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "7",
+    "object_repr": "allison",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 188,
+  "fields": {
+    "action_time": "2025-11-08T03:30:42.308Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "9",
+    "object_repr": "amanda",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 189,
+  "fields": {
+    "action_time": "2025-11-08T03:30:48.600Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "8",
+    "object_repr": "greg",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 190,
+  "fields": {
+    "action_time": "2025-11-08T03:30:53.626Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "8",
+    "object_repr": "greg",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 191,
+  "fields": {
+    "action_time": "2025-11-08T03:30:58.726Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "11",
+    "object_repr": "john",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 192,
+  "fields": {
+    "action_time": "2025-11-08T03:31:03.824Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "6",
+    "object_repr": "kyle",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 193,
+  "fields": {
+    "action_time": "2025-11-08T03:31:09.090Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "10",
+    "object_repr": "makenzy",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 194,
+  "fields": {
+    "action_time": "2025-11-08T03:31:14.786Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "12",
+    "object_repr": "sharon",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 195,
+  "fields": {
+    "action_time": "2025-11-08T03:31:20.322Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "steve",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 196,
+  "fields": {
+    "action_time": "2025-11-08T03:31:24.968Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "tanslee",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 197,
+  "fields": {
+    "action_time": "2025-11-08T03:32:04.884Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "10",
+    "object_repr": "makenzy",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 198,
+  "fields": {
+    "action_time": "2025-11-08T03:32:26.749Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "7",
+    "object_repr": "allison",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 199,
+  "fields": {
+    "action_time": "2025-11-08T03:38:52.222Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Family (default)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 200,
+  "fields": {
+    "action_time": "2025-11-08T03:40:20.824Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Family (default)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 201,
+  "fields": {
+    "action_time": "2025-11-08T03:51:26.999Z",
+    "user": [
+      "tanslee"
+    ],
+    "content_type": [
+      "recipes",
+      "homepage"
+    ],
+    "object_id": "4",
+    "object_repr": "Westbrook Recipes",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Background image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 202,
+  "fields": {
+    "action_time": "2025-11-08T03:53:01.280Z",
+    "user": [
+      "tanslee"
+    ],
+    "content_type": [
+      "recipes",
+      "homepage"
+    ],
+    "object_id": "4",
+    "object_repr": "Westbrook Recipes",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Background image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 203,
+  "fields": {
+    "action_time": "2025-11-08T03:55:27.875Z",
+    "user": [
+      "tyler"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "Family (default)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Permissions\"]}}]"
+  }
+}
+]

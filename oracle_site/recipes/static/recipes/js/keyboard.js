@@ -45,12 +45,27 @@
     let activeInput = null;
     let isShiftActive = false;
 
-    document.addEventListener('focusin', function (event) {
-      if (isInteractiveInput(event.target)) {
-        activeInput = event.target;
+    function showKeyboardFor(target) {
+      if (isInteractiveInput(target)) {
+        activeInput = target;
         keyboard.style.display = 'block';
       }
+    }
+
+    document.addEventListener('focusin', function (event) {
+      showKeyboardFor(event.target);
     });
+
+    document.addEventListener('pointerdown', function (event) {
+      if (isInteractiveInput(event.target)) {
+        showKeyboardFor(event.target);
+      }
+    });
+
+    const initiallyFocused = document.activeElement;
+    if (isInteractiveInput(initiallyFocused)) {
+      showKeyboardFor(initiallyFocused);
+    }
 
     keyboard.addEventListener('mousedown', function (event) {
       if (event.target.classList.contains('key')) {
