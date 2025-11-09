@@ -3,15 +3,45 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'your-sfdsbnahjfgqyuiogrty8urgyu8orfgvsdwhjfbvdhksajecret-key'  # Replace with your secret key
+
+def _env_bool(name, default=False):
+    value = os.environ.get(name)
+    if value is None:
+        return default
+    return value.lower() in {"1", "true", "yes", "on"}
+
+
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY',
+    'your-sfdsbnahjfgqyuiogrty8urgyu8orfgvsdwhjfbvdhksajecret-key'
+)
 
 DEBUG_PROPAGATE_EXCEPTIONS = False
 
-DEBUG = True
+DEBUG = _env_bool("DJANGO_DEBUG", True)
 
-ALLOWED_HOSTS = ["recipe.swestbrook.org", "141.148.137.228", "localhost", '127.0.0.1', 'tyler-recipe-app-1-62732e39277f.herokuapp.com']
+_default_allowed_hosts = [
+    "recipe.swestbrook.org",
+    "141.148.137.228",
+    "localhost",
+    "127.0.0.1",
+    "tyler-recipe-app-1-62732e39277f.herokuapp.com",
+]
+_env_allowed_hosts = os.environ.get("DJANGO_ALLOWED_HOSTS")
+if _env_allowed_hosts:
+    ALLOWED_HOSTS = [host.strip() for host in _env_allowed_hosts.split(",") if host.strip()]
+else:
+    ALLOWED_HOSTS = _default_allowed_hosts
 
-CSRF_TRUSTED_ORIGINS = ['https://recipe.swestbrook.org']
+_default_csrf_trusted = [
+    'https://recipe.swestbrook.org',
+    'https://tyler-recipe-app-1-62732e39277f.herokuapp.com',
+]
+_env_csrf = os.environ.get("DJANGO_CSRF_TRUSTED_ORIGINS")
+if _env_csrf:
+    CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in _env_csrf.split(",") if origin.strip()]
+else:
+    CSRF_TRUSTED_ORIGINS = _default_csrf_trusted
 
 
 INSTALLED_APPS = [
@@ -21,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'ckeditor',
     'ckeditor_uploader',  # Added uploader app
     'recipes',
@@ -29,6 +60,7 @@ INSTALLED_APPS = [
 # westbrook_recipes/settings.py
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'westbrook_recipes.middleware.Custom404Middleware',  # <-- Added
@@ -89,12 +121,21 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'recipes', 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [BASE_DIR / 'recipes' / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_BACKGROUND_IMAGE = 'backgrounds/istockphoto-517488802-612x612_p7wh3mq.jpg'
 
 # CKEditor uploader configuration
@@ -132,4 +173,17 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+
+CRISPY_TEMPLATE_PACK = os.environ.get("CRISPY_TEMPLATE_PACK", "bootstrap")
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+SECURE_HSTS_SECONDS = 60 * 60 * 24 * 30 if not DEBUG else 0
+SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
+SECURE_HSTS_PRELOAD = not DEBUG
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
