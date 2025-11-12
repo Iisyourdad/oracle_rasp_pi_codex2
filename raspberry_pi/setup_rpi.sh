@@ -13,9 +13,6 @@ REPO_URL="https://github.com/Iisyourdad/oracle_rasp_pi_codex2.git"
 REPO_DIR="${PROJECT_ROOT}/oracle_rasp_pi_codex2"
 PI_DIR="${REPO_DIR}/raspberry_pi"
 VENV_DIR="${PI_DIR}/venv"
-KIOSK_ASSET_DIR="/home/${USER_NAME}/.local/share/kiosk"
-BLACK_IMAGE_SRC="${REPO_DIR}/black.jpg"
-BLACK_IMAGE_DEST="${KIOSK_ASSET_DIR}/black.jpg"
 AUTOSTART_DIR="/home/${USER_NAME}/.config/lxsession/LXDE-pi"
 AUTOSTART_FILE="${AUTOSTART_DIR}/autostart"
 LOG_DIR="/home/${USER_NAME}/logs"
@@ -51,7 +48,6 @@ sudo apt install -y \
   python3-pip \
   python3-dev \
   unclutter \
-  feh \
   curl \
   jq \
   xdotool \
@@ -80,9 +76,6 @@ else
 fi
 cd "${REPO_DIR}"
 git submodule update --init --recursive || true
-
-log "Preparing kiosk assets"
-install -Dm644 "${BLACK_IMAGE_SRC}" "${BLACK_IMAGE_DEST}"
 
 log "Creating the Python virtual environment"
 cd "${PI_DIR}"
@@ -113,7 +106,7 @@ export PYTHONUNBUFFERED=1
 exec "${PYTHON_BIN}" manage.py runserver 0.0.0.0:8000 >> "${LOG_FILE}" 2>&1
 EOF
 
-log "Creating kiosk launcher that shows black splash, pings, and launches Chromium"
+log "Creating kiosk launcher that waits for network checks and launches Chromium"
 cat <<'EOF' > /home/tyler/run_kiosk.sh
 #!/bin/bash
 set -euo pipefail
@@ -121,15 +114,12 @@ set -euo pipefail
 USER_NAME="tyler"
 REMOTE_URL="https://tyler-recipe-app-1-62732e39277f.herokuapp.com/"
 LOCAL_URL="http://127.0.0.1:8000/"
-BLACK_IMAGE="/home/tyler/.local/share/kiosk/black.jpg"
 PING_TARGET="google.com"
 PING_COUNT=3
 PING_TIMEOUT=2
 CHECK_INTERVAL=12
-INITIAL_CHECK_INTERVAL=1
-SPLASH_MIN_DURATION=5
+INITIAL_WAIT_SECONDS=3
 DISPLAY_ID=":0"
-FEH="/usr/bin/feh"
 UNCLUTTER="/usr/bin/unclutter"
 LOG_FILE="/home/tyler/logs/kiosk.log"
 
@@ -149,34 +139,12 @@ else
   exit 1
 fi
 
-SPLASH_PID=""
 CURRENT_MODE=""
-INITIAL_DECISION_MADE=0
-SPLASH_DEADLINE=0
 
 cleanup() {
-  if [[ -n "${SPLASH_PID}" ]] && kill -0 "${SPLASH_PID}" >/dev/null 2>&1; then
-    kill "${SPLASH_PID}" >/dev/null 2>&1 || true
-    wait "${SPLASH_PID}" >/dev/null 2>&1 || true
-  fi
   pkill -f "${UNCLUTTER}" >/dev/null 2>&1 || true
 }
 trap cleanup EXIT
-
-launch_splash() {
-  if [[ -x "${FEH}" && -f "${BLACK_IMAGE}" ]]; then
-    "${FEH}" --fullscreen --hide-pointer --quiet "${BLACK_IMAGE}" &
-    SPLASH_PID=$!
-  fi
-}
-
-stop_splash() {
-  if [[ -n "${SPLASH_PID}" ]]; then
-    kill "${SPLASH_PID}" >/dev/null 2>&1 || true
-    wait "${SPLASH_PID}" >/dev/null 2>&1 || true
-    SPLASH_PID=""
-  fi
-}
 
 launch_browser() {
   local url="$1"
@@ -205,13 +173,35 @@ has_internet() {
   ping -q -c "${PING_COUNT}" -W "${PING_TIMEOUT}" "${PING_TARGET}" >/dev/null 2>&1
 }
 
-launch_splash
 ensure_unclutter
-SPLASH_DEADLINE=$(( $(date +%s) + SPLASH_MIN_DURATION ))
+
+INITIAL_MODE=""
+DEADLINE=$(( $(date +%s) + INITIAL_WAIT_SECONDS ))
+
+while [[ -z "${INITIAL_MODE}" && $(date +%s) -lt ${DEADLINE} ]]; do
+  if has_internet; then
+    INITIAL_MODE="remote"
+    break
+  fi
+  sleep 1
+done
+
+if [[ -z "${INITIAL_MODE}" ]]; then
+  if has_internet; then
+    INITIAL_MODE="remote"
+  else
+    INITIAL_MODE="local"
+  fi
+fi
+
+CURRENT_MODE="${INITIAL_MODE}"
+if [[ "${CURRENT_MODE}" == "remote" ]]; then
+  launch_browser "${REMOTE_URL}"
+else
+  launch_browser "${LOCAL_URL}"
+fi
 
 while true; do
-  NOW_TS=$(date +%s)
-
   if has_internet; then
     NEXT_MODE="remote"
     TARGET_URL="${REMOTE_URL}"
@@ -220,22 +210,9 @@ while true; do
     TARGET_URL="${LOCAL_URL}"
   fi
 
-  if [[ "${INITIAL_DECISION_MADE}" -eq 0 ]]; then
-    if (( NOW_TS >= SPLASH_DEADLINE )); then
-      INITIAL_DECISION_MADE=1
-      CURRENT_MODE="${NEXT_MODE}"
-      stop_splash
-      launch_browser "${TARGET_URL}"
-    else
-      sleep "${INITIAL_CHECK_INTERVAL}"
-      continue
-    fi
-  else
-    if [[ "${CURRENT_MODE}" != "${NEXT_MODE}" ]]; then
-      CURRENT_MODE="${NEXT_MODE}"
-      stop_splash
-      launch_browser "${TARGET_URL}"
-    fi
+  if [[ "${NEXT_MODE}" != "${CURRENT_MODE}" ]]; then
+    CURRENT_MODE="${NEXT_MODE}"
+    launch_browser "${TARGET_URL}"
   fi
 
   sleep "${CHECK_INTERVAL}"
