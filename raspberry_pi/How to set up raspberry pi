@@ -1,86 +1,257 @@
-# Raspberry Pi Kiosk Setup
+# Raspberry Pi Oracle Recipe Kiosk Setup
 
-Chat gpt wrote this and I'm like 100% sure that this is now how we do it. 
+The Pi’s job is to boot, immediately show a full-screen black image (`black.jpg`), check for internet, and then either:
 
+1. Open `http://recipe.swestbrook.org` in Chromium kiosk mode when online.
+2. Launch the bundled Django Wi-Fi portal (`python manage.py runserver 0.0.0.0:8000`) and point Chromium at it when offline.
 
-The Raspberry Pi now only runs the Wi-Fi portal. The recipe site itself is hosted separately on Oracle Cloud.
+Everything below assumes the default Raspberry Pi OS desktop image, the `tyler` user, and a Pi that has not been customized yet.
 
-1. **Update the OS**
-   ```bash
-   sudo apt update
-   sudo apt full-upgrade
-   sudo apt install python3-venv curl chromium-browser
-   ```
+---
 
-2. **Clone the project**
-   ```bash
-   cd ~/Downloads
-   git clone https://github.com/Iisyourdad/oracle_recipe_pi.git
-   cd oracle_recipe_pi/raspberry_pi
-   ```
+## 0. One-time `raspi-config` changes (do this before running the script)
 
-3. **Create a virtual environment** (optional but recommended)
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install django
-   ```
+```bash
+sudo raspi-config
+# 1 System Options  -> S5 Boot / Auto Login -> B4 Desktop Autologin
+# 2 Display Options -> D4 Screen Blanking   -> Disable
+# 2 Display Options -> D5 Screen Blanking (Console) -> Disable (if shown)
+# Finish and reboot when prompted
+```
 
-4. **Test the Wi-Fi portal**
-   ```bash
-   ./start_wifi_portal.sh
-   # visit http://127.0.0.1:8000/ from Chromium on the Pi
-   ```
+After the reboot, log back in as `tyler` and run the installer in the next section.
 
-5. **Configure kiosk mode**
-   - Copy `raspberry_pi/run_kiosk.sh` to a convenient location (for example `/home/pi/run_kiosk.sh`).
-   - Make it executable: `chmod +x ~/run_kiosk.sh`.
-   - Edit `REMOTE_URL` inside `/home/pi/run_kiosk.sh` or export the variable in `/etc/environment` so it points to your Oracle deployment.
+---
 
-6. **Create a systemd service for the Wi-Fi portal** (if you want it to start on boot when offline)
-   ```ini
-   [Unit]
-   Description=Raspberry Pi Wi-Fi Portal
-   After=network.target
+## 1. Copy/paste installer (roughly 160 lines)
 
-   [Service]
-   WorkingDirectory=/home/pi/oracle_recipe_pi/raspberry_pi
-   Environment="PYTHON_BIN=/home/pi/oracle_recipe_pi/raspberry_pi/venv/bin/python"
-   ExecStart=/home/pi/oracle_recipe_pi/raspberry_pi/start_wifi_portal.sh
-   Restart=on-failure
+Copy everything from the first `cat` line through the final `bash` line and paste it into a terminal. The script installs packages, clones the repo, builds the virtualenv, creates `black.jpg`, writes the kiosk launcher, registers the systemd user service, and enables lingering so it runs on boot.
 
-   [Install]
-   WantedBy=multi-user.target
-   ```
-   Save as `/etc/systemd/system/pi-wifi-portal.service`, then run:
-   ```bash
-   sudo systemctl daemon-reload
-   sudo systemctl enable pi-wifi-portal.service
-   sudo systemctl start pi-wifi-portal.service
-   ```
+```bash
+cat <<'EOF' > /home/tyler/install_recipe_kiosk.sh
+#!/bin/bash
+set -euo pipefail
 
-7. **Create a user service for kiosk Chromium**
-   ```ini
-   [Unit]
-   Description=Chromium kiosk for recipe machine
-   After=graphical-session.target
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 
-   [Service]
-   ExecStart=/bin/bash /home/pi/run_kiosk.sh
-   Restart=on-failure
+LOG_FILE="/home/tyler/install_recipe_kiosk.log"
+exec > >(tee -a "$LOG_FILE") 2>&1
 
-   [Install]
-   WantedBy=default.target
-   ```
-   Save the file as `~/.config/systemd/user/kiosk.service`, then run:
-   ```bash
-   systemctl --user daemon-reload
-   systemctl --user enable kiosk.service
-   systemctl --user start kiosk.service
-   ```
-   Finally, enable lingering so the user service starts automatically:
-   ```bash
-   sudo loginctl enable-linger pi
-   ```
+log() {
+  printf '\n[%s] %s\n' "$(date +'%F %T')" "$1"
+}
 
-The rest of your existing touch-screen, splash-screen, and display settings can stay the same.
+log "Updating APT package lists"
+sudo apt update
+
+log "Upgrading installed packages"
+sudo apt full-upgrade -y
+
+log "Installing required packages"
+sudo apt install -y \
+  git \
+  python3-venv \
+  python3-pip \
+  curl \
+  chromium-browser \
+  feh \
+  imagemagick \
+  unclutter \
+  x11-xserver-utils
+
+log "Cloning or updating oracle_rasp_pi_codex2"
+cd /home/tyler
+if [ -d oracle_rasp_pi_codex2/.git ]; then
+  cd oracle_rasp_pi_codex2
+  git pull --ff-only
+else
+  git clone https://github.com/Iisyourdad/oracle_rasp_pi_codex2.git
+  cd oracle_rasp_pi_codex2
+fi
+
+PROJECT_DIR="/home/tyler/oracle_rasp_pi_codex2/raspberry_pi"
+cd "$PROJECT_DIR"
+
+log "Creating or refreshing the virtual environment"
+python3 -m venv venv || true
+source venv/bin/activate
+pip install --upgrade pip wheel
+pip install -r ../requirements.txt
+deactivate
+
+log "Creating black.jpg for the splash screen"
+if [ ! -f "$PROJECT_DIR/black.jpg" ]; then
+  convert "$PROJECT_DIR/black.png" -resize 1920x1080\! "$PROJECT_DIR/black.jpg"
+fi
+
+log "Running Django migrations once"
+source "$PROJECT_DIR/venv/bin/activate"
+python manage.py migrate --noinput
+deactivate
+
+log "Configuring LightDM to keep the display awake"
+sudo mkdir -p /etc/lightdm/lightdm.conf.d
+sudo tee /etc/lightdm/lightdm.conf.d/50-oracle-kiosk.conf >/dev/null <<'CONF'
+[Seat:*]
+xserver-command=X -s 0 -dpms -nocursor -br -background black
+CONF
+
+log "Ensuring LXDE autostart disables blanking"
+sudo mkdir -p /etc/xdg/lxsession/LXDE-pi
+sudo tee /etc/xdg/lxsession/LXDE-pi/autostart >/dev/null <<'CONF'
+@xset s noblank
+@xset s off
+@xset -dpms
+@unclutter -idle 0
+CONF
+
+log "Writing the kiosk launcher script"
+cat <<'SCRIPT' > /home/tyler/run_recipe_kiosk.sh
+#!/bin/bash
+set -euo pipefail
+
+export DISPLAY=:0
+export XAUTHORITY=/home/tyler/.Xauthority
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
+
+PROJECT_DIR="/home/tyler/oracle_rasp_pi_codex2/raspberry_pi"
+VENV_DIR="$PROJECT_DIR/venv"
+PYTHON_BIN="$VENV_DIR/bin/python"
+REMOTE_URL="http://recipe.swestbrook.org"
+LOCAL_URL="http://127.0.0.1:8000"
+BLACK_IMAGE="$PROJECT_DIR/black.jpg"
+LOG_FILE="/tmp/recipe_kiosk.log"
+
+mkdir -p /tmp
+touch "$LOG_FILE"
+
+launch_black_screen() {
+  /usr/bin/feh --fullscreen --hide-pointer --borderless --auto-zoom --quiet "$BLACK_IMAGE" &
+  BLACK_PID=$!
+}
+
+stop_black_screen() {
+  if [[ -n "${BLACK_PID:-}" ]] && ps -p "$BLACK_PID" >/dev/null 2>&1; then
+    kill "$BLACK_PID" || true
+  fi
+}
+
+launch_browser() {
+  local url="$1"
+  /usr/bin/chromium-browser \
+    --kiosk \
+    --start-fullscreen \
+    --incognito \
+    --noerrdialogs \
+    --disable-infobars \
+    --disable-session-crashed-bubble \
+    --check-for-update-interval=31536000 \
+    "$url" &
+  BROWSER_PID=$!
+}
+
+start_local_portal() {
+  if ! pgrep -f "manage.py runserver 0.0.0.0:8000" >/dev/null; then
+    cd "$PROJECT_DIR"
+    "$PYTHON_BIN" manage.py migrate --noinput >> "$LOG_FILE" 2>&1
+    "$PYTHON_BIN" manage.py runserver 0.0.0.0:8000 >> "$LOG_FILE" 2>&1 &
+    sleep 5
+  fi
+}
+
+main() {
+  launch_black_screen
+
+  for attempt in {1..5}; do
+    if curl --silent --head --max-time 5 "$REMOTE_URL" >/dev/null; then
+      stop_black_screen
+      launch_browser "$REMOTE_URL"
+      wait "$BROWSER_PID"
+      exit 0
+    fi
+    sleep 2
+  done
+
+  start_local_portal
+  stop_black_screen
+  launch_browser "$LOCAL_URL"
+  wait "$BROWSER_PID"
+}
+
+main
+SCRIPT
+
+log "Setting permissions on the kiosk launcher"
+chmod +x /home/tyler/run_recipe_kiosk.sh
+chown tyler:tyler /home/tyler/run_recipe_kiosk.sh
+
+log "Creating the systemd user service"
+mkdir -p /home/tyler/.config/systemd/user
+cat <<'SERVICE' > /home/tyler/.config/systemd/user/kiosk.service
+[Unit]
+Description=Oracle Recipe Chromium kiosk
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/home/tyler/run_recipe_kiosk.sh
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+SERVICE
+
+log "Reloading and enabling the kiosk service"
+systemctl --user daemon-reload
+systemctl --user enable kiosk.service
+systemctl --user restart kiosk.service
+
+log "Allowing the kiosk user service to survive reboots"
+sudo loginctl enable-linger tyler
+
+log "Setup complete. Reboot to test the kiosk."
+EOF
+
+chmod +x /home/tyler/install_recipe_kiosk.sh
+/bin/bash /home/tyler/install_recipe_kiosk.sh
+```
+
+The log file lives at `/home/tyler/install_recipe_kiosk.log` if you need to review the run later.
+
+---
+
+## 2. Useful follow-up commands
+
+- **Check kiosk status**  
+  ```bash
+  systemctl --user status kiosk.service
+  journalctl --user -u kiosk.service -f
+  ```
+
+- **Manually rerun the Wi-Fi portal without rebooting**  
+  ```bash
+  pkill -f manage.py || true
+  /home/tyler/run_recipe_kiosk.sh
+  ```
+
+- **Update to the latest code later**  
+  ```bash
+  cd /home/tyler/oracle_rasp_pi_codex2
+  git pull
+  cd raspberry_pi
+  source venv/bin/activate
+  pip install -r ../requirements.txt
+  deactivate
+  systemctl --user restart kiosk.service
+  ```
+
+Once the installer has been run, every boot sequence is:
+
+1. LightDM logs `tyler` into the desktop automatically.
+2. `run_recipe_kiosk.sh` (via `kiosk.service`) launches `black.jpg` in `feh`.
+3. The script checks `http://recipe.swestbrook.org`.  
+   - Success → Chromium opens that site in kiosk mode.  
+   - Failure → Django Wi-Fi portal starts locally, and Chromium opens `http://127.0.0.1:8000`.
+4. If Chromium ever exits, systemd restarts it and the whole process repeats.

@@ -7,6 +7,6 @@ git push origin main               # first time? use: git push -u origin main
 
 
 git add .
-git commit -m "new updates"
+git commit -m "new installation"
 git pull --rebase origin main
 git push origin main
