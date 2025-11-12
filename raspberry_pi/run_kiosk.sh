@@ -2,7 +2,7 @@
 set -euo pipefail
 
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REMOTE_URL=${REMOTE_URL:-"https://your-oracle-domain.example.com"}
+REMOTE_URL=${REMOTE_URL:-"https://tyler-recipe-app-1-62732e39277f.herokuapp.com/"}
 LOCAL_URL=${LOCAL_URL:-"http://127.0.0.1:8000/"}
 PYTHON_BIN=${PYTHON_BIN:-python3}
 
