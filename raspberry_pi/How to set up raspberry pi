@@ -13,13 +13,15 @@ REPO_URL="https://github.com/Iisyourdad/oracle_rasp_pi_codex2.git"
 REPO_DIR="${PROJECT_ROOT}/oracle_rasp_pi_codex2"
 PI_DIR="${REPO_DIR}/raspberry_pi"
 VENV_DIR="${PI_DIR}/venv"
-BLACK_IMAGE="${REPO_DIR}/black.jpg"
+KIOSK_ASSET_DIR="/home/${USER_NAME}/.local/share/kiosk"
+BLACK_IMAGE_SRC="${REPO_DIR}/black.jpg"
+BLACK_IMAGE_DEST="${KIOSK_ASSET_DIR}/black.jpg"
+AUTOSTART_DIR="/home/${USER_NAME}/.config/lxsession/LXDE-pi"
+AUTOSTART_FILE="${AUTOSTART_DIR}/autostart"
 LOG_DIR="/home/${USER_NAME}/logs"
-USER_SYSTEMD_DIR="/home/${USER_NAME}/.config/systemd/user"
 PING_TARGET="google.com"
 PING_COUNT=3
 PING_TIMEOUT=2
-PING_INTERVAL=12
 
 if [[ "$(whoami)" != "${USER_NAME}" ]]; then
   echo "Please run this script as ${USER_NAME}."
@@ -28,7 +30,7 @@ fi
 
 export XDG_RUNTIME_DIR="/run/user/$(id -u "${USER_NAME}")"
 export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
-mkdir -p "${PROJECT_ROOT}" "${LOG_DIR}" "${USER_SYSTEMD_DIR}"
+mkdir -p "${PROJECT_ROOT}" "${LOG_DIR}"
 cd "/home/${USER_NAME}"
 
 log() {
@@ -79,6 +81,9 @@ fi
 cd "${REPO_DIR}"
 git submodule update --init --recursive || true
 
+log "Preparing kiosk assets"
+install -Dm644 "${BLACK_IMAGE_SRC}" "${BLACK_IMAGE_DEST}"
+
 log "Creating the Python virtual environment"
 cd "${PI_DIR}"
 python3 -m venv "${VENV_DIR}"
@@ -116,11 +121,13 @@ set -euo pipefail
 USER_NAME="tyler"
 REMOTE_URL="https://tyler-recipe-app-1-62732e39277f.herokuapp.com/"
 LOCAL_URL="http://127.0.0.1:8000/"
-BLACK_IMAGE="/home/tyler/raspberry_pi_recipe_oracle/oracle_rasp_pi_codex2/black.jpg"
+BLACK_IMAGE="/home/tyler/.local/share/kiosk/black.jpg"
 PING_TARGET="google.com"
 PING_COUNT=3
 PING_TIMEOUT=2
 CHECK_INTERVAL=12
+INITIAL_CHECK_INTERVAL=1
+SPLASH_MIN_DURATION=5
 DISPLAY_ID=":0"
 FEH="/usr/bin/feh"
 UNCLUTTER="/usr/bin/unclutter"
@@ -144,6 +151,8 @@ fi
 
 SPLASH_PID=""
 CURRENT_MODE=""
+INITIAL_DECISION_MADE=0
+SPLASH_DEADLINE=0
 
 cleanup() {
   if [[ -n "${SPLASH_PID}" ]] && kill -0 "${SPLASH_PID}" >/dev/null 2>&1; then
@@ -198,21 +207,37 @@ has_internet() {
 
 launch_splash
 ensure_unclutter
+SPLASH_DEADLINE=$(( $(date +%s) + SPLASH_MIN_DURATION ))
 
 while true; do
+  NOW_TS=$(date +%s)
+
   if has_internet; then
-    if [[ "${CURRENT_MODE}" != "remote" ]]; then
-      CURRENT_MODE="remote"
+    NEXT_MODE="remote"
+    TARGET_URL="${REMOTE_URL}"
+  else
+    NEXT_MODE="local"
+    TARGET_URL="${LOCAL_URL}"
+  fi
+
+  if [[ "${INITIAL_DECISION_MADE}" -eq 0 ]]; then
+    if (( NOW_TS >= SPLASH_DEADLINE )); then
+      INITIAL_DECISION_MADE=1
+      CURRENT_MODE="${NEXT_MODE}"
       stop_splash
-      launch_browser "${REMOTE_URL}"
+      launch_browser "${TARGET_URL}"
+    else
+      sleep "${INITIAL_CHECK_INTERVAL}"
+      continue
     fi
   else
-    if [[ "${CURRENT_MODE}" != "local" ]]; then
-      CURRENT_MODE="local"
+    if [[ "${CURRENT_MODE}" != "${NEXT_MODE}" ]]; then
+      CURRENT_MODE="${NEXT_MODE}"
       stop_splash
-      launch_browser "${LOCAL_URL}"
+      launch_browser "${TARGET_URL}"
     fi
   fi
+
   sleep "${CHECK_INTERVAL}"
 done
 EOF
@@ -236,23 +261,6 @@ RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
-EOF
-
-log "Building systemd user service for Chromium kiosk"
-cat <<'EOF' > /home/tyler/.config/systemd/user/kiosk.service
-[Unit]
-Description=Chromium Kiosk Launcher
-After=graphical-session.target network-online.target
-Wants=graphical-session.target network-online.target
-
-[Service]
-Type=simple
-ExecStart=/bin/bash /home/tyler/run_kiosk.sh
-Restart=on-failure
-RestartSec=5
-
-[Install]
-WantedBy=default.target
 EOF
 
 log "Creating Wi-Fi helper script with passwordless sudo access"
@@ -320,33 +328,38 @@ xinput set-button-map "xwayland-touch:14" 0 2 3
 EOF
 chmod +x /home/tyler/disable_touch_tap.sh
 
-cat <<'EOF' > /home/tyler/.config/systemd/user/disable-touch.service
-[Unit]
-Description=Disable touchscreen tap-to-click
-After=graphical-session.target
-
-[Service]
-Type=oneshot
-ExecStart=/bin/bash /home/tyler/disable_touch_tap.sh
-
-[Install]
-WantedBy=graphical-session.target
+log "Configuring LXDE autostart entries for kiosk and touch tweaks"
+mkdir -p "${AUTOSTART_DIR}"
+if [[ ! -f "${AUTOSTART_FILE}" ]]; then
+  cat <<'EOF' > "${AUTOSTART_FILE}"
+@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
 EOF
+fi
+
+if ! grep -Fxq "@/bin/bash /home/tyler/disable_touch_tap.sh" "${AUTOSTART_FILE}" 2>/dev/null; then
+  echo "@/bin/bash /home/tyler/disable_touch_tap.sh" >> "${AUTOSTART_FILE}"
+fi
+
+if ! grep -Fxq "@/bin/bash /home/tyler/run_kiosk.sh" "${AUTOSTART_FILE}" 2>/dev/null; then
+  echo "@/bin/bash /home/tyler/run_kiosk.sh" >> "${AUTOSTART_FILE}"
+fi
+
+LEGACY_KIOSK_UNIT="/home/tyler/.config/systemd/user/kiosk.service"
+LEGACY_TOUCH_UNIT="/home/tyler/.config/systemd/user/disable-touch.service"
+if [[ -f "${LEGACY_KIOSK_UNIT}" || -f "${LEGACY_TOUCH_UNIT}" ]]; then
+  log "Cleaning up legacy systemd user services"
+  rm -f "${LEGACY_KIOSK_UNIT}" "${LEGACY_TOUCH_UNIT}"
+  systemctl --user stop kiosk.service >/dev/null 2>&1 || true
+  systemctl --user disable kiosk.service >/dev/null 2>&1 || true
+  systemctl --user stop disable-touch.service >/dev/null 2>&1 || true
+  systemctl --user disable disable-touch.service >/dev/null 2>&1 || true
+fi
 
 log "Enable and start system services"
 sudo systemctl daemon-reload
 sudo systemctl enable django.service
 sudo systemctl restart django.service
-
-log "Enable and start user services"
-systemctl --user daemon-reload
-systemctl --user enable kiosk.service
-systemctl --user enable disable-touch.service
-systemctl --user restart kiosk.service || true
-systemctl --user restart disable-touch.service || true
-
-log "Allow user services to run without an interactive login"
-sudo loginctl enable-linger "${USER_NAME}"
 
 log "Update initramfs for splash/config changes"
 sudo update-initramfs -u
