@@ -48,7 +48,6 @@ sudo apt install -y \
   python3-venv \
   python3-pip \
   python3-dev \
-  chromium-browser \
   unclutter \
   feh \
   curl \
@@ -56,8 +55,18 @@ sudo apt install -y \
   xdotool \
   x11-xserver-utils \
   lightdm \
-  libatlas-base-dev \
   pkg-config
+
+log "Installing Chromium browser (with fallback)"
+if ! sudo apt install -y chromium-browser; then
+  log "chromium-browser package unavailable; installing chromium instead"
+  sudo apt install -y chromium
+fi
+
+log "Installing optional math acceleration libraries"
+if ! sudo apt install -y libatlas-base-dev; then
+  log "libatlas-base-dev not available; continuing without it"
+fi
 
 log "Cloning or updating the project repository"
 if [[ -d "${REPO_DIR}/.git" ]]; then
@@ -113,7 +122,6 @@ PING_COUNT=3
 PING_TIMEOUT=2
 CHECK_INTERVAL=12
 DISPLAY_ID=":0"
-CHROMIUM="/usr/bin/chromium-browser"
 FEH="/usr/bin/feh"
 UNCLUTTER="/usr/bin/unclutter"
 LOG_FILE="/home/tyler/logs/kiosk.log"
@@ -124,6 +132,15 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
 
 mkdir -p "$(dirname "${LOG_FILE}")"
 touch "${LOG_FILE}"
+
+if command -v chromium-browser >/dev/null 2>&1; then
+  CHROMIUM_BIN="$(command -v chromium-browser)"
+elif command -v chromium >/dev/null 2>&1; then
+  CHROMIUM_BIN="$(command -v chromium)"
+else
+  echo "Chromium browser not found. Install chromium-browser or chromium." | tee -a "${LOG_FILE}"
+  exit 1
+fi
 
 SPLASH_PID=""
 CURRENT_MODE=""
@@ -154,8 +171,8 @@ stop_splash() {
 
 launch_browser() {
   local url="$1"
-  pkill -f "${CHROMIUM}" >/dev/null 2>&1 || true
-  "${CHROMIUM}" \
+  pkill -f "${CHROMIUM_BIN}" >/dev/null 2>&1 || true
+  "${CHROMIUM_BIN}" \
     --kiosk \
     --start-fullscreen \
     --incognito \
