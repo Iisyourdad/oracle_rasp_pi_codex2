@@ -9,4 +9,5 @@ urlpatterns = [
     path('connecting/', views.wifi_connecting, name='wifi_connecting'),
     path('do_connect/', views.wifi_do_connect, name='wifi_do_connect'),
     path('configured/', views.configured, name='configured'),
+    path('recipe-status/', views.recipe_status, name='recipe_status'),
 ]

@@ -116,6 +116,7 @@
       <input name="password" placeholder="Password" type="password" required>
       <button type="submit">Connect</button>
     </form>
+    <a href="{{ recipe_url }}" class="continue-btn">Go to recipes</a>
     {% if error %}
       <div class="error">{{ error }}</div>
     {% endif %}
@@ -247,6 +248,28 @@
       });
       document.addEventListener('mouseup', function(){ dragging=false; });
     });
+  </script>
+  <script>
+    (function(){
+      const statusUrl = "{% url 'recipe_status' %}";
+      const recipeUrl = "{{ recipe_url }}";
+
+      function checkRecipeAvailability(){
+        fetch(statusUrl, { cache: 'no-store' })
+          .then(response => response.json())
+          .then(data => {
+            if (data.reachable) {
+              window.location.href = data.redirect_url || recipeUrl;
+            }
+          })
+          .catch(() => {
+            // Ignore network errors; we'll try again on the next interval.
+          });
+      }
+
+      checkRecipeAvailability();
+      setInterval(checkRecipeAvailability, 5000);
+    })();
   </script>
 </body>
 </html>
