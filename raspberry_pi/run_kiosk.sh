@@ -2,10 +2,14 @@
 
 # Always load splash page on startup
 echo "Starting Raspberry Pi Recipe App in kiosk mode..."
-/bin/chromium-browser \
-  --touch-events=enabled \
-  --enable-pinch \
-  --enable-touch-drag-drop \
+/usr/bin/chromium \
   --kiosk \
-  --start-maximized \
-  http://0.0.0.0:8000
+  --start-fullscreen \
+  --no-first-run \
+  --noerrdialogs \
+  --disable-infobars \
+  --disable-session-crashed-bubble \
+  --disable-translate \
+  --disable-infobars \
+  --disable-restore-session-state \
+  http://0.0.0.0:8000/

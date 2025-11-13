@@ -5,18 +5,21 @@ sudo raspi-config
 #select 2 Network Options
   #N1 Hostname
 
+
+
+
 sudo apt update
 sudo apt full-upgrade
 
 
 cd Downloads
 git clone https://github.com/Iisyourdad/oracle_rasp_pi_codex2.git
-cd..
-cd..
+cd ..
+cd ..
 mv ~/Downloads/oracle_rasp_pi_codex2/raspberry_pi/{django_server_run.sh,run_kiosk.sh} .
 sudo chmod +x /home/tyler/django_server_run.sh
 sudo chmod +x /home/tyler/run_kiosk.sh
-cd /oracle_rasp_pi_codex2/raspberry_pi
+cd Downloads/oracle_rasp_pi_codex2/raspberry_pi
 sudo apt update
 sudo apt install python3-venv
 python3 -m venv venv
@@ -33,9 +36,9 @@ pip install tzdata
 deactivate
 
 cd ..
-cd..
+cd ..
 
-sudo d +x /home/tyler/django_server_run.sh
+sudo chmod +x /home/tyler/django_server_run.sh
 sudo chmod +x /home/tyler/run_kiosk.sh
 
 sudo nano /etc/systemd/system/django.service
@@ -47,11 +50,17 @@ After=network.target
 
 [Service]
 User=tyler
-ExecStart=/home/tyler/django_server_run.sh
+WorkingDirectory=/home/tyler/Downloads/oracle_rasp_pi_codex2/raspberry_pi
+Environment=PATH=/home/tyler/Downloads/oracle_rasp_pi_codex2/raspberry_pi/venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=/home/tyler/Downloads/oracle_rasp_pi_codex2/raspberry_pi/venv/bin/python manage.py runserver 0.0.0.0:8000
 Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target
+
 
 """
 mkdir -p /home/tyler/.config/systemd/user
@@ -60,16 +69,29 @@ nano /home/tyler/.config/systemd/user/kiosk.service
 """
 [Unit]
 Description=Kiosk Service
-After=graphical-session.target
+After=graphical.target
 
 [Service]
-ExecStart=/bin/bash /home/tyler/run_kiosk.sh
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=/home/tyler/.Xauthority
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStartPre=/bin/sleep 4
+ExecStart=/usr/bin/chromium --kiosk --start-fullscreen --no-first-run --noerrdialogs --disable-infobars --disable-session-crashed-bubble --disable-translate --disable-restore-session-state http://0.0.0.0:8000/
 Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=default.target
 
+
 """
+sed -i 's/\r$//' /home/tyler/run_kiosk.sh
+sed -i 's/\r$//' /home/tyler/django_server_run.sh
+
+
+
 systemctl --user daemon-reload
 systemctl --user enable kiosk.service
 systemctl --user start kiosk.service
@@ -82,6 +104,25 @@ sudo systemctl enable django.service
 sudo systemctl enable kiosk.service
 sudo systemctl start django.service
 sudo systemctl start kiosk.service
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 sudo cp /boot/firmware/config.txt /boot/config.txt.backup
 sudo nano /boot/firmware/config.txt
