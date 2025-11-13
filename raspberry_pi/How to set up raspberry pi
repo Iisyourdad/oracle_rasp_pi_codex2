@@ -15,7 +15,6 @@ sudo apt full-upgrade
 cd Downloads
 git clone https://github.com/Iisyourdad/oracle_rasp_pi_codex2.git
 cd ..
-cd ..
 mv ~/Downloads/oracle_rasp_pi_codex2/raspberry_pi/{django_server_run.sh,run_kiosk.sh} .
 sudo chmod +x /home/tyler/django_server_run.sh
 sudo chmod +x /home/tyler/run_kiosk.sh
@@ -35,6 +34,7 @@ pip install sqlparse
 pip install tzdata
 deactivate
 
+cd ..
 cd ..
 cd ..
 
