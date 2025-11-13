@@ -10,13 +10,13 @@ sudo apt full-upgrade
 
 
 cd Downloads
-git clone https://github.com/Iisyourdad/final_rasp_pi_recipe.git
+git clone https://github.com/Iisyourdad/oracle_rasp_pi_codex2.git
 cd..
 cd..
-mv ~/Downloads/final_rasp_pi_recipe/{django_server_run.sh,run_kiosk.sh} .
+mv ~/Downloads/oracle_rasp_pi_codex2/raspberry_pi/{django_server_run.sh,run_kiosk.sh} .
 sudo chmod +x /home/tyler/django_server_run.sh
 sudo chmod +x /home/tyler/run_kiosk.sh
-cd final_rasp_pi_recipe
+cd /oracle_rasp_pi_codex2/raspberry_pi
 sudo apt update
 sudo apt install python3-venv
 python3 -m venv venv
